@@ -1,0 +1,143 @@
+
+ACTOR Knife_3D: Weapon
+{
+  Weapon.SelectionOrder 3700
+  Weapon.Kickback 100
+  Inventory.PickupSound "misc/w_pkup"
+  Inventory.PickupMessage "You got the Combat Knife!" // "Knife!"
+  Obituary "$o was sliced and diced by %k's knife."
+  Tag "Combat Knife"
+  +NOALERT
+  +Weapon.NOAUTOFIRE
+  +WEAPON.DONTBOB
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  
+  States
+  {
+  Ready:
+    ATKN A 0 ACS_NamedExecuteAlways("LOADDOWN", 0, 20, 56)
+    ATKN A 1 A_WeaponReady
+    Loop
+  Deselect:
+    ATKN A 1 A_Lower(12)
+    Loop
+  Select:
+    ATKN A 1 A_Raise(12)
+    Loop
+  Fire:
+	/*
+    ATKN B 2
+    ATKN C 2 A_PlaySound ("ALIECLW1", 1, 1.0)
+    ATKN D 2 A_Punch
+    ATKN E 2
+    ATKN F 2
+    ATKN G 2
+    ATKN H 2 A_PlaySound ("ALIECLW1", 1, 1.0)
+    ATKN I 2 A_Punch
+    ATKN J 2
+	*/
+	ATKN BCD 1
+	ATKN E 0 A_PlaySound ("ALIECLW1", 1, 1.0)
+	ATKN # 0 A_JumpIf(GetCVAR("avw_weapons")==0, 3)
+	ATKN # 0 A_CustomPunch(2*random(1,10), true, 0, "EnhancedKnifePuff")
+	ATKN # 0 A_Jump(256, 2)
+	ATKN E 1 A_Punch
+	ATKN FGHIJKLM 1
+	ATKN N 0 A_PlaySound ("ALIECLW1", 1, 1.0)
+	ATKN # 0 A_JumpIf(GetCVAR("avw_weapons")==0, 3)
+	ATKN # 0 A_CustomPunch(2*random(1,10), true, 0, "EnhancedKnifePuff")
+	ATKN # 0 A_Jump(256, 2)
+	ATKN N 1 A_Punch
+	ATKN OPQRS 1
+    Goto Ready
+  }
+}
+
+ACTOR YutaniKnife_3D: Weapon
+{
+  Weapon.SelectionOrder 3700
+  Weapon.Kickback 100
+  Inventory.PickupSound "misc/w_pkup"
+  Inventory.PickupMessage "You got the Combat Knife!" // "Knife!"
+  Obituary "$o was sliced and diced by %k's knife."
+  Tag "Yutani Knife"
+  +NOALERT
+  +Weapon.NOAUTOFIRE
+  +WEAPON.DONTBOB
+  +WEAPON.WIMPY_WEAPON
+  +WEAPON.MELEEWEAPON
+  
+  States
+  {
+  Ready:
+    YTKN A 0 ACS_NamedExecuteAlways("LOADDOWN", 0, 20, 56)
+    YTKN A 1 A_WeaponReady
+    Loop
+  Deselect:
+    YTKN A 1 A_Lower(12)
+    Loop
+  Select:
+    YTKN A 1 A_Raise(12)
+    Loop
+  Fire:
+	/*
+    YTKN B 2
+    YTKN C 2 A_PlaySound ("ALIECLW1", 1, 1.0)
+    YTKN D 2 A_Punch
+    YTKN E 2
+    YTKN F 2
+    YTKN G 2
+    YTKN H 2 A_PlaySound ("ALIECLW1", 1, 1.0)
+    YTKN I 2 A_Punch
+    YTKN J 2
+	*/
+	YTKN BCD 1
+	YTKN E 0 A_PlaySound ("ALIECLW1", 1, 1.0)
+	YTKN # 0 A_JumpIf(GetCVAR("avw_weapons")==0, 3)
+	YTKN # 0 A_CustomPunch(2*random(1,10), true, 0, "EnhancedKnifePuff")
+	YTKN # 0 A_Jump(256, 2)
+	YTKN E 1 A_Punch
+	YTKN FGHIJKLM 1
+	YTKN N 0 A_PlaySound ("ALIECLW1", 1, 1.0)
+	YTKN # 0 A_JumpIf(GetCVAR("avw_weapons")==0, 3)
+	YTKN # 0 A_CustomPunch(2*random(1,10), true, 0, "EnhancedKnifePuff")
+	YTKN # 0 A_Jump(256, 2)
+	YTKN N 1 A_Punch
+	YTKN OPQRS 1
+    Goto Ready
+  }
+}
+
+ACTOR Knifespawner_3D : CustomInventory replaces Knifespawner
+{
+  Inventory.PickupSound "misc/w_pkup"
+  Inventory.PickupMessage "You got the Combat Knife!" // "Knife!"
+  Tag "Combat Knife"
+    +FLOORCLIP
+    +INVENTORY.IGNORESKILL
+	States
+   {
+   Spawn:
+    KNFE A -1
+      Loop
+   Pickup:
+	TNT1 A 0 A_JumpIfInventory("ColonistClass",1,"Pickup.ColonistClass")
+	TNT1 A 0 A_JumpIfInventory("MercenaryClass",1,"Pickup.MercenaryClass")
+	TNT1 A 0 A_JumpIfInventory("YutaniClass",1,"Pickup.YutaniClass")
+	TNT1 A 0 A_JumpIfInventory("SyntheticClass",1,"Pickup.SyntheticClass")
+      Stop
+   Pickup.ColonistClass:
+   TNT1 A 0 A_GiveInventory("Knife_3D",1)
+      Stop
+	Pickup.MercenaryClass:
+   TNT1 A 0 A_GiveInventory("Knife_3D",1)
+      Stop
+   Pickup.YutaniClass:
+   TNT1 A 0 A_GiveInventory("YutaniKnife_3D",1)
+      Stop
+   Pickup.SyntheticClass:
+   TNT1 A 0 A_GiveInventory("Knife_3D",1)
+      Stop
+   }
+}

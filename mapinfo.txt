@@ -1,0 +1,5 @@
+Gameinfo
+{
+	//Playerclasses = "ColonistPlayer", "MercenaryPlayer", "YutaniOperativePlayer", "SyntheticPlayer"
+	EventHandlers = "weather_event", "AEnvItemReplace", "PlayerPropModifier", "SuperHumanMovesHandler", "EnhancedVision"
+}

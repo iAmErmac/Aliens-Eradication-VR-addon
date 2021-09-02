@@ -1,0 +1,361 @@
+
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready
+	FrameIndex SMRT A 0 0
+
+	//Fire
+	FrameIndex SMRT B 0 0
+	FrameIndex SMRT C 0 0
+}
+
+//Auto mode
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56_green.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready - auto mode
+	FrameIndex SMRT G 0 0
+
+	//Fire - auto mode
+	FrameIndex SMRT H 0 0
+	FrameIndex SMRT I 0 0
+}
+
+//No ammo
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56_red.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready - auto mode
+	FrameIndex SMRT J 0 0
+}
+
+//Reloading
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	//Reloading
+	FrameIndex SMRR A 0 4
+	FrameIndex SMRR B 0 5
+	FrameIndex SMRR C 0 6
+	FrameIndex SMRR D 0 7
+	FrameIndex SMRR E 0 8
+	FrameIndex SMRR F 0 9
+	FrameIndex SMRR G 0 10
+	FrameIndex SMRR H 0 11
+	FrameIndex SMRR I 0 12
+	FrameIndex SMRR J 0 13
+	FrameIndex SMRR K 0 14
+	FrameIndex SMRR L 0 15
+	FrameIndex SMRR M 0 16
+	FrameIndex SMRR N 0 17
+	
+	//Insert new mag
+	FrameIndex SMRR P 0 18
+	FrameIndex SMRR Q 0 19
+	FrameIndex SMRR R 0 20
+	FrameIndex SMRR S 0 21
+	FrameIndex SMRR T 0 22
+	FrameIndex SMRR U 0 23
+	FrameIndex SMRR V 0 24
+	FrameIndex SMRR W 0 25
+	FrameIndex SMRR X 0 26
+	FrameIndex SMRR Y 0 27
+}
+
+//Without magazine
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	SurfaceSkin 0 0 "m56.png"
+	SurfaceSkin 0 1 "m56.png"
+	SurfaceSkin 0 2 "m56.png"
+	SurfaceSkin 0 3 "empty.png"
+	SurfaceSkin 0 4 "empty.png"
+	SurfaceSkin 0 5 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	FrameIndex SMRR O 0 17
+}
+
+//Smart hud
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "smart_hud.md3"
+	Skin 0 "smart_mode1.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	FrameIndex SMHD A 0 0
+}
+
+//Smart hud
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "smart_hud.md3"
+	Skin 0 "smart_mode2.png"
+	Model 1 "smart_hud.md3"
+	Skin 1 "smart_mode2.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	FrameIndex SMHD B 0 2	FrameIndex SMHD B 1 3
+}
+
+//Flash
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "smart_mf.md3"
+	Skin 0 "smart_mf.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	FrameIndex SMMF A 0 0
+	Skin 0 "smart_mf2.png"
+	FrameIndex SMMF B 0 0
+	Skin 0 "smart_mf3.png"
+	FrameIndex SMMF C 0 0
+	Skin 0 "smart_mf4.png"
+	FrameIndex SMMF D 0 0
+	Skin 0 "smart_mf5.png"
+	FrameIndex SMMF E 0 0
+	Skin 0 "smart_mf6.png"
+	FrameIndex SMMF F 0 0
+}
+
+//Pickup model
+Model Smartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56_pickup.md3"
+	Skin 0 "m56.png"
+
+	Scale 1.8 1.8 1.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SMTG P 0 0
+}
+
+
+
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready
+	FrameIndex YMRT A 0 0
+
+	//Fire
+	FrameIndex YMRT B 0 0
+	FrameIndex YMRT C 0 0
+}
+
+//Auto mode
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56_green.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready - auto mode
+	FrameIndex YMRT G 0 0
+
+	//Fire - auto mode
+	FrameIndex YMRT H 0 0
+	FrameIndex YMRT I 0 0
+}
+
+//No ammo
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56_red.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+
+	//Ready - auto mode
+	FrameIndex YMRT J 0 0
+}
+
+//Reloading
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	Skin 0 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	//Reloading
+	FrameIndex SMRR A 0 4
+	FrameIndex SMRR B 0 5
+	FrameIndex SMRR C 0 6
+	FrameIndex SMRR D 0 7
+	FrameIndex SMRR E 0 8
+	FrameIndex SMRR F 0 9
+	FrameIndex SMRR G 0 10
+	FrameIndex SMRR H 0 11
+	FrameIndex SMRR I 0 12
+	FrameIndex SMRR J 0 13
+	FrameIndex SMRR K 0 14
+	FrameIndex SMRR L 0 15
+	FrameIndex SMRR M 0 16
+	FrameIndex SMRR N 0 17
+	
+	//Insert new mag
+	FrameIndex SMRR P 0 18
+	FrameIndex SMRR Q 0 19
+	FrameIndex SMRR R 0 20
+	FrameIndex SMRR S 0 21
+	FrameIndex SMRR T 0 22
+	FrameIndex SMRR U 0 23
+	FrameIndex SMRR V 0 24
+	FrameIndex SMRR W 0 25
+	FrameIndex SMRR X 0 26
+	FrameIndex SMRR Y 0 27
+}
+
+//Without magazine
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56.md3"
+	SurfaceSkin 0 0 "m56.png"
+	SurfaceSkin 0 1 "m56.png"
+	SurfaceSkin 0 2 "m56.png"
+	SurfaceSkin 0 3 "empty.png"
+	SurfaceSkin 0 4 "empty.png"
+	SurfaceSkin 0 5 "m56.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	FrameIndex SMRR O 0 17
+}
+
+//Smart hud
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "smart_hud.md3"
+	Skin 0 "smart_mode1.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	NOINTERPOLATION
+	
+	FrameIndex SMHD A 0 0
+	Skin 0 "smart_mode2.png"
+	FrameIndex SMHD B 0 1
+	Offset 0.0 -60.0 -7.0
+	FrameIndex SMHD C 0 1
+	Skin 0 "empty.png"
+	FrameIndex SMHD D 0 1
+}
+
+//Flash
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "smart_mf.md3"
+	Skin 0 "smart_mf.png"
+
+	Scale -0.9 0.9 0.9
+	Offset 0.0 -30.0 -7.0
+	
+	//Reloading
+	FrameIndex SMMF A 0 0
+	Skin 0 "smart_mf2.png"
+	FrameIndex SMMF B 0 0
+	Skin 0 "smart_mf3.png"
+	FrameIndex SMMF C 0 0
+	Skin 0 "smart_mf4.png"
+	FrameIndex SMMF D 0 0
+	Skin 0 "smart_mf5.png"
+	FrameIndex SMMF E 0 0
+	Skin 0 "smart_mf6.png"
+	FrameIndex SMMF F 0 0
+}
+
+//Pickup model
+Model YutaniSmartgun_3D
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56_pickup.md3"
+	Skin 0 "m56.png"
+
+	Scale 1.8 1.8 1.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SMTG P 0 0
+}
+
+//Pickup model
+Model NewSmartgunspawner
+{
+	Path "Models\Weapons\smartgun"
+	Model 0 "m56_pickup.md3"
+	Skin 0 "m56.png"
+
+	Scale 1.8 1.8 1.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SMTG P 0 0
+}

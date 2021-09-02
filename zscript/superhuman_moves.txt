@@ -1,0 +1,320 @@
+
+/*
+* Dash script credits to Apeirogon
+* https://forum.zdoom.org/viewtopic.php?p=1059177#p1059177
+*
+* Ledge grab script credits to dodopod
+* https://forum.zdoom.org/viewtopic.php?f=105&t=59085
+*
+* Everything is modified and extended by Ermac
+* https://github.com/iAmErmac
+*
+*
+* You may use this in your project. Just leave this comment
+* at the top of this script and give credit please
+*
+*/
+
+class SuperHumanMovesHandler : EventHandler
+{
+	inventory super_ability;
+	int countdown_for_dash_stop;
+	int countdown_for_djump_stop;
+	int max_dash_num;
+	
+	//Setting up with cvar values
+	private void UpdateSuperHumanAbilities(Actor super_ability)
+	{
+		if(CVar.GetCVar("avw_double_dash").getBool() == true)
+		{
+			Z_SuperMove(super_ability).max_dash_buttons_press = 2;
+			max_dash_num = 2;
+		}
+		else
+		{
+			Z_SuperMove(super_ability).max_dash_buttons_press = 1; //don't allow double dash
+			max_dash_num = 1;
+		}
+		
+		Z_SuperMove(super_ability).dash_multiplier = 30 * CVar.GetCVar("avw_dash_mult").getFloat();
+		Z_SuperMove(super_ability).dash_move_cooldown = Ceil(35 * CVar.GetCVar("avw_dash_cooldown").getFloat());
+		Z_SuperMove(super_ability).double_jumping = CVar.GetCVar("avw_double_jump").getBool();
+		Z_SuperMove(super_ability).ledge_climbing = CVar.GetCVar("avw_ledge_climb").getBool();
+	}
+	
+	//Action response to keybinds
+    override void NetworkProcess(ConsoleEvent e)
+    {
+        let plr = players[e.Player].mo;
+		if(!plr) return;
+		
+		//Detect pressing of Dash key
+		
+        if (e.Name == "sh_dash")
+        {
+			{
+				if(!super_ability) return;
+
+				if(super_ability)
+				{
+					Z_SuperMove(super_ability).forward_thrust = true;
+					countdown_for_dash_stop = 1; //disable dash flag shortly, otherwise player will keep dashing infinitely
+					
+					if(Z_SuperMove(super_ability).dash_buttons_press < max_dash_num)
+					{
+						Z_SuperMove(super_ability).dash_buttons_press++;
+					}
+					else
+					{
+						Z_SuperMove(super_ability).dash_buttons_press = max_dash_num;
+					}
+				}
+			}
+        }
+		
+		
+		//Detect pressing of jump key
+		
+		if (e.Name == "sh_jump")   
+		{
+			Z_SuperMove(super_ability).jump_thrust = true;
+			Z_SuperMove(super_ability).jump_buttons_press++;
+			countdown_for_djump_stop = 35;
+		}
+    }
+
+	override void PlayerEntered(PlayerEvent e)
+	{
+		players[e.PlayerNumber].mo.setinventory("Z_SuperMove", 1, false);
+		
+		super_ability = players[e.playernumber].mo.findinventory("Z_SuperMove");
+		
+		UpdateSuperHumanAbilities(super_ability);
+		Z_SuperMove(super_ability).cooldown_in_ticks = 0;
+		Z_SuperMove(super_ability).dash_buttons_press = 0;
+		Z_SuperMove(super_ability).jump_buttons_press = 0;
+		Z_SuperMove(super_ability).MaxLedgeHeight = 48;
+		Z_SuperMove(super_ability).ClimbSpeed = 2;
+	}
+	
+	override bool InputProcess (InputEvent e)
+	{
+		int key1;
+		int key2;
+		
+		if (e.Type == InputEvent.Type_KeyDown && automapactive == false) // not when automap is active
+		{
+			[key1, key2] = bindings.getKeysForCommand("+jump");
+			if(e.keyScan == key1 || e.keyScan == key2)
+			{
+				SendNetworkEvent("sh_jump", e.KeyScan);
+			}
+		}
+		 
+		return false;
+	}
+	
+	override void WorldTick()
+	{
+		if(countdown_for_dash_stop > 0)
+			countdown_for_dash_stop--;
+		else
+			Z_SuperMove(super_ability).forward_thrust = false;
+			
+		if(countdown_for_djump_stop > 0)
+			countdown_for_djump_stop--;
+		else
+		{
+			Z_SuperMove(super_ability).jump_thrust = false;
+			Z_SuperMove(super_ability).jump_buttons_press = 0;
+		}
+			
+		UpdateSuperHumanAbilities(super_ability);
+	}
+}
+
+class Z_SuperMove : CustomInventory
+{
+	bool forward_thrust; //set by cvar
+	int dash_buttons_press;
+	int max_dash_buttons_press;
+	int dash_move_cooldown; //set by cvar
+	double dash_multiplier; //set by cvar
+	int cooldown_in_ticks;
+	
+	bool double_jumping; //set by cvar
+	bool jump_thrust;
+	int jump_buttons_press;
+	
+	bool ledge_climbing; //set by cvar
+	const climbReach = 64;
+    const thrustSpeed = 4;
+    bool climbing;
+
+    int maxLedgeHeight;
+    int climbSpeed;
+
+    property MaxLedgeHeight: maxLedgeHeight;
+    property ClimbSpeed: climbSpeed;
+
+	Default
+	{
+		Inventory.MaxAmount 1;
+		+INVENTORY.UNDROPPABLE
+		+INVENTORY.UNTOSSABLE
+		+INVENTORY.AUTOACTIVATE
+	}
+
+	override void doeffect()
+	{
+	
+		//Actual processing of dash moves
+		if(forward_thrust == true && cooldown_in_ticks <= 0)
+		{
+			if(dash_buttons_press <= max_dash_buttons_press)
+			{
+				owner.vel = (cos(owner.angle), sin(owner.angle), 5);
+
+				owner.vel.x *= dash_multiplier;
+				owner.vel.y *= dash_multiplier;
+				
+				owner.vel.z *= 1.2;
+				owner.bspectral = true;
+
+				//owner.a_playsound("");
+			}
+			
+			if(dash_buttons_press >= max_dash_buttons_press)
+			{
+				dash_buttons_press = 0;
+				cooldown_in_ticks = dash_move_cooldown;
+			}
+			else
+			{
+				cooldown_in_ticks = 2;
+			}
+			
+			return;
+		}
+		
+		if(cooldown_in_ticks > 0)
+		{cooldown_in_ticks--;}
+		
+		if(cooldown_in_ticks <= randompick(6, 7, 8) && owner.bspectral == true)
+		{owner.bspectral = false;}
+		
+		
+		//Actual processing of double jump
+		if(double_jumping && jump_thrust == true)
+		{
+			if(jump_buttons_press == 2)
+			{
+				owner.vel.z = 0; //cancel the actual jump for pressing jump button
+				owner.A_ChangeVelocity(0, 0, owner.player.mo.jumpZ);
+				jump_thrust = false;
+				jump_buttons_press = 0;
+
+				//owner.a_playsound("");
+			}
+			
+			return;
+		}
+		
+		
+		
+		//Actual processing of Ledge grabbing
+		if(ledge_climbing)
+		{
+			AttemptLedgeGrabbing(owner);
+		}
+	}
+	
+	private void AttemptLedgeGrabbing(Actor sh_player)
+	{
+		if(!sh_player) return;
+		
+		double ledgeHeight;
+        {
+            vector3 oldPos = sh_player.pos;
+
+            sh_player.SetXyz(sh_player.pos + (0, 0, maxLedgeHeight));   // Account for thin 3D floors
+            ledgeHeight = sh_player.GetZAt(sh_player.radius + climbReach, 0) - oldPos.z;
+            sh_player.SetXyz(oldPos);
+        }
+
+        bool jump = sh_player.player.cmd.buttons & BT_JUMP;
+        double clearance = sh_player.GetZAt(sh_player.radius + climbReach, 0, 0, GZF_CEILING) - sh_player.GetZAt(sh_player.radius + climbReach, 0);
+
+        // Start/stop climbing
+        if (!climbing)
+        {
+            if (jump && ledgeHeight > sh_player.maxStepHeight && ledgeHeight <= maxLedgeHeight)
+            {
+                climbing = true;
+                //A_PlaySound("*Climb", CHAN_BODY);
+            }
+        }
+        else
+        {
+            if (!jump || ledgeHeight > maxLedgeHeight)  // Drop down/get knocked down from ledge
+            {
+                climbing = false;
+            }
+            else if (ledgeHeight <= sh_player.maxStepHeight && clearance >= 0.5 * sh_player.height)    // Reach top of ledge
+            {
+                climbing = false;
+
+                // Crouch, so player can fit into small spaces
+                sh_player.player.crouchFactor = 0.5;
+                sh_player.SetOrigin(sh_player.pos + (0, 0, 0.5 * sh_player.height), false);   // Keep view from jerking
+                sh_player.player.viewHeight *= 0.5;
+
+                sh_player.VelFromAngle(thrustSpeed, sh_player.angle);  // Thrust player onto ledge
+            }
+
+            if (!climbing)  // Exit climbing state
+            {
+                sh_player.player.SetPsprite(PSP_WEAPON, sh_player.player.readyWeapon.GetUpState());
+                sh_player.player.jumpTics = -1;
+            }
+        }
+
+        if (climbing)
+        {
+            // Weapon will reset to Ready state, so we need to set it to Down state every tic
+            sh_player.player.SetPsprite(PSP_WEAPON, sh_player.player.readyWeapon.GetDownState());
+
+            let psp = sh_player.player.GetPsprite(PSP_WEAPON);
+            if (psp.y == WEAPONTOP) // Keep weapon down
+            {
+                psp.y = WEAPONBOTTOM;
+            }
+            else    // Lower weapon twice as fast
+            {
+                psp.y += 6;
+            }
+
+            if (ledgeHeight <= sh_player.maxStepHeight) // Hold onto ledge at top, if player can't get on it
+            {
+                sh_player.vel = (0, 0, 0);
+            }
+            else    // Climb ledge
+            {
+                sh_player.vel = (0, 0, climbSpeed);
+            }
+        }
+	}
+
+	States
+	{
+	Use:
+		TNT1 A 0;
+		Fail;
+	Pickup:
+		TNT1 A 0
+		{
+			return true;
+		}
+		Stop;
+	}
+}

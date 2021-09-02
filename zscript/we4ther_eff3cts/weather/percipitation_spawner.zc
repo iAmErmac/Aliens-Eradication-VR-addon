@@ -1,0 +1,158 @@
+//thinker responsible for spawning weather actors
+class thundercloud : thinker
+{
+    //position on a map around which thinker should spawn snow/rain
+    private vector2 map_spot;
+    //distance to check around map point is player inside
+    //and to determine how fasr away from map spot weather should have spawns
+    private vector2 check_distances;
+    //used for checking is percipitation spawned inside sky sector
+    private array<int> closest_lines;
+    private array<line_info> lines_info;
+
+    private sector_cyclon origin_thinker;
+    private double min_z_height;
+    private double player_camera_height;
+    private uint timer;
+    private int main_sector;
+    //create new spawn point for percipitations
+    //vec is position on a map on XY plane
+    //it is main event
+    //dist is distance along axis inside of which point should check for player camera
+    //cl is integer array filloed with lines id
+    static thundercloud new_thundercloud(vector2 vec, sector_cyclon it, vector2 dist, in array<int> cl)
+    {
+        thundercloud tc = thundercloud(new("thundercloud") );
+
+        tc.map_spot = vec;
+        tc.origin_thinker = it;
+        tc.check_distances = dist;
+        tc.min_z_height = interval_between_points * 3;
+        tc.closest_lines.move(cl);
+        int l; double d;
+        for(uint i = 0; i < tc.closest_lines.size(); i++)
+        {
+            line_info ln = line_info(new("line_info"));
+            ln.line_id = tc.closest_lines[i];
+            ln.line_normal = ( (-level.lines[tc.closest_lines[i]].delta.y, level.lines[tc.closest_lines[i]].delta.x), 0);
+            ln.midline = ( (level.lines[tc.closest_lines[i]].v1.p + level.lines[tc.closest_lines[i]].v2.p)/2, 0);
+            ln.front_sky = weather_event.is_sky_sector(level.lines[tc.closest_lines[i]].frontsector);
+            ln.line_dir = (level.lines[tc.closest_lines[i]].delta, 0);
+            ln.line_vert_1 = (level.lines[tc.closest_lines[i]].v1.p, 0);
+            ln.line_vert_2 = (level.lines[tc.closest_lines[i]].v2.p, 0);
+            tc.lines_info.push(ln);
+        }
+
+        [l, d] = tc.find_closest_line((vec, 0));
+        if(d > dist.x * dist.x && d > dist.y * dist.y)
+        {
+            //console.printf("check dist %f, x dist %f, y dist %f", d, dist.x * dist.x, dist.y * dist.y);
+            //console.printf("destroy thundecloud");
+            //too far away from any sky sector
+            tc.destroy();
+            return null;
+        }
+
+        return tc;
+    }
+
+    //fills volume  of sector near spawn point with percipitations
+    private void fill_volume()
+    {
+        for(uint i = 0; i < 30; i++)
+        {
+            vector3 v =
+            (
+                map_spot.x + frandom[weather](-check_distances.x, check_distances.x),
+                map_spot.y + frandom[weather](-check_distances.y, check_distances.y),
+                0
+            );
+
+            double ceil_hei = level.sectors[main_sector].ceilingplane.ZatPoint(v.xy);
+            double floor_hei = level.sectors[main_sector].floorplane.ZatPoint(v.xy);
+
+            v.z = frandom[weather](floor_hei, ceil_hei);
+            sector_cyclon(origin_thinker).raining_men(v);
+        }
+    }
+
+    //check is any player near this weather spawning point
+    private bool player_nearby()
+    {
+        bool is_looking = false;
+        for (int i = 0; i < MAXPLAYERS; i++)
+        {
+            PlayerInfo p = players[i];
+            
+            if (p != null && p.camera != null)
+            {
+                if(abs(p.camera.pos.x - map_spot.x) <= check_distances.x * 2 && abs(p.camera.pos.y - map_spot.y) <= check_distances.y * 2)
+                {
+                    player_camera_height = p.camera.pos.z;
+                    is_looking = true;
+                    break;
+                }
+            }
+        }
+        return is_looking;
+    }
+    //return closest line from array to some position
+    //pos is position in world
+    //strict_search specify should it return ANY line (even if it projection laying outside of line vertices, false case)
+    //or one where projection lying between line vertices, true case
+    private int, double find_closest_line(vector3 pos, bool strict_search = false)
+    {
+        double dist = double.infinity;
+        int closest = -1;
+        for(uint i = 0; i < lines_info.size(); i++)
+        {
+            let inf = line_info(lines_info[i]);
+
+            //console.printf("stored midline %f %f %f, dir %f %f %f, actual v1 %f %f  dir %f %f", inf.midline, inf.line_dir, level.lines[inf.line_id].v1.p, level.lines[inf.line_id].delta);
+            vector3 point_proj = weather_math.point_line_intersection(pos, inf.midline, inf.line_dir);
+            if(strict_search)
+                if(!weather_math.is_between_points(inf.line_vert_1, inf.line_vert_2, point_proj) )
+                    continue;
+
+            double line_dist_sqrd = (point_proj - pos) dot (point_proj - pos);
+            if(line_dist_sqrd < dist)
+            {
+                //console.printf("last distance %f cur distance %f", dist, line_dist_sqrd);
+                dist = line_dist_sqrd;
+                closest = i;
+            }
+        }
+        return closest, dist;
+    }
+
+    override void tick()
+    {
+        //if level is frozen return to not spawn >90000 weather actors
+        if(!CWE_weather || globalfreeze) return;
+
+        timer ++;
+        
+        if(timer >= CWE_intensity)
+        {
+            timer = 0;
+            if(player_nearby() )
+            {
+                vector3 v =
+                (
+                    map_spot.x + frandom[weather](-check_distances.x, check_distances.x),
+                    map_spot.y + frandom[weather](-check_distances.y, check_distances.y),
+                    0
+                );
+
+                sector s = sector_cyclon(origin_thinker).is_inside_group(v.xy);
+                if(s)
+                {
+                    v.z = player_camera_height + min_z_height;
+
+                    sector_cyclon(origin_thinker).raining_men(v);
+                }
+            }
+        }
+    }
+
+}

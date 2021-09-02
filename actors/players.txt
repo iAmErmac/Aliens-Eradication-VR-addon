@@ -1,0 +1,376 @@
+Actor ColonistPlayer : DoomPlayer
+{
++NOTELEFRAG
+   Species "Marines"
+	damagefactor "MarineTarget", 0.99
+	damagefactor "AlienTarget", 0.99
+	damagefactor "DroidTarget", 0.99
+	damagefactor "PredatorTarget", 0.99
+    damagefactor "Turret", 0.1
+   Painsound "playp25"
+   Deathsound "plydeath"
+   BloodType "NormalBlood"
+   Scale 0.5
+   Player.DisplayName "Colonist"
+   Player.Soundclass "Marine1"
+   Player.StartItem "ColonistStartItem", 1
+   Player.StartItem "ColonistClass", 1
+   Player.StartItem "IsPlayer", 1
+   Player.StartItem "TargetIsAMarine", 1
+   Player.StartItem "M4A3Pistol_3D"
+   Player.StartItem "PistolClip", 48
+   Player.StartItem "ShotgunLoaded", 8
+   Player.StartItem "PulseLoaded", 95
+   Player.StartItem "FlamethrowerLoaded", 150
+   Player.StartItem "SmartLoaded", 150
+   Player.StartItem "Flare", 8
+   Player.StartItem "Satcheler_3D"
+   Player.StartItem "SatchelAmmo", 1
+   Player.StartItem "PistolLoaded", 12
+   Player.StartItem "AutoTurret", 1
+   Player.StartItem "DryFlames", 1
+   Player.StartItem "CMShot", 6
+   Player.ForwardMove 0.7
+   Player.SideMove 0.7
+
+   States
+	{   
+ 	Spawn:
+		TNT1 A 0 	
+		ATS1 A -1		
+		Goto See 
+	See:
+		TNT1 A 0 	
+		ATS1 ABCDEFG 4
+		Loop
+ 	Missile:
+		TNT1 A 0 	
+		ATS1 H 12
+		Goto See
+	Melee:
+		TNT1 A 0 	
+		ATS1 JI 6 BRIGHT
+		Goto Missile
+	Pain:
+		TNT1 A 0 	
+		ATS1 KLMN 4 A_Pain
+ 		Goto Spawn
+	Death:
+		ATS1 K 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATS1 L 6
+		ATS1 M 8 A_NoBlocking
+		ATS1 OPQ 8
+		ATS1 R -1
+		Stop
+		Death.hugger:
+			  TNT1 A 0 ACS_ExecuteAlways(768, 0,0,0)
+              TNT1 A 0 A_PlaySound("plydeath")
+              TNT1 A 0
+              TNT1 A 0 A_NoBlocking
+              HUGG V -1
+              stop
+	XDeath:
+		ATS1 K 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATS1 L 6
+		ATS1 M 8 A_NoBlocking
+		ATS1 OPQ 8
+		ATS1 R -1
+		Stop	
+		
+	}
+}
+
+
+Actor MercenaryPlayer : DoomPlayer
+{
++NOTELEFRAG
+   Species "Marines"
+   damagefactor "MarineTarget", 0.0
+   damagefactor "AlienTarget", 0.0
+   damagefactor "DroidTarget", 0.0
+   damagefactor "PredatorTarget", 0.0
+   damagefactor "Turret", 0.1
+   BloodType "NormalBlood"
+   Painsound "playp100"
+   Deathsound "plydeath"
+   Scale 0.565
+   Player.DisplayName "Mercenary"
+   Player.Soundclass "Marine1"
+   Player.StartItem "IsPlayer", 1
+   Player.StartItem "MercStartItem", 1
+   Player.StartItem "MercenaryClass", 1
+   Player.StartItem "TargetIsAMarine", 1
+   Player.StartItem "PulseRifle_3D"
+   Player.StartItem "Knife_3D"
+   Player.StartItem "FlamethrowerLoaded", 150
+   Player.StartItem "Newshotgun_3D"
+   Player.StartItem "SmartLoaded", 150
+   Player.StartItem "MercPistol_3D"
+   Player.StartItem "PistolClip", 48
+   Player.StartItem "AutoTurret", 2
+   Player.StartItem "PulseRifleClip", 400
+   Player.StartItem "GrenadeAmmo", 10
+   Player.StartItem "Satcheler_3D", 1
+   Player.StartItem "SatchelAmmo", 2
+   Player.StartItem "Apesuit"
+   Player.StartItem "Flare", 8
+   Player.StartItem "PistolLoaded", 12
+   Player.StartItem "PulseLoaded", 95
+   Player.StartItem "AliensShell", 16
+   Player.StartItem "ShotgunLoaded", 8
+   Player.StartItem "DryFlames", 1
+   Player.StartItem "CMShot", 6 
+   Player.ForwardMove 0.7
+   Player.SideMove 0.7
+
+	States
+	{   
+ 	Spawn:
+		TNT1 A 0 	
+		ATS2 A -1		
+		Goto See 
+	See:
+		TNT1 A 0 	
+		ATS2 ABCDEFG 4
+		Loop
+ 	Missile:
+		TNT1 A 0 	
+		ATS2 IJ 12
+		Goto See
+	Melee:
+		TNT1 A 0 	
+		ATS2 HI 6 BRIGHT
+		Goto Missile
+	Pain:
+		TNT1 A 0 	
+		ATS2 KLMN 4 A_Pain
+ 		Goto Spawn
+    Death:
+		ATS2 O 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATS2 P 8 A_NoBlocking
+		ATS2 QR 8
+		ATS2 S -1
+		Stop
+		Death.hugger:
+			  TNT1 A 0 ACS_ExecuteAlways(768, 0,0,0)
+              TNT1 A 0 A_PlaySound("plydeath")
+              TNT1 A 0
+              TNT1 A 0 A_NoBlocking
+              HUGG V -1
+              stop
+	XDeath:
+		ATS2 O 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATS2 P 8 A_NoBlocking
+		ATS2 QR 8
+		ATS2 S -1
+		Stop
+	}
+}
+
+
+Actor YutaniOperativePlayer : DoomPlayer
+{
++NOTELEFRAG
+     damagetype "Turret"
+
+   Species "Marines"
+   damagefactor "MarineTarget", 0.9
+   damagefactor "AlienTarget", 0.9
+   damagefactor "DroidTarget", 0.9
+   damagefactor "PredatorTarget", 0.0
+   damagefactor "Turret", 0.1
+   BloodType "NormalBlood"
+   Painsound "FEMPAIN"
+   Deathsound "FEMDEAD"
+	Scale 0.58
+   Player.DisplayName "Yutani_Operative"
+   Player.Soundclass "Marine3"
+   Player.StartItem "YutaniStartItem", 1
+   Player.StartItem "YutaniClass", 1
+   Player.StartItem "IsPlayer", 1
+   Player.StartItem "TargetIsAMarine", 1
+   Player.StartItem "YutaniFlamer_3D"
+   Player.StartItem "YPulseLoaded", 95
+   Player.StartItem "YShotgunLoaded", 8
+   Player.StartItem "YSmartLoaded", 150
+   Player.StartItem "YutaniKnife_3D"
+   Player.StartItem "YutaniSatchel", 1
+   Player.StartItem "SatchelAmmo", 4
+   Player.StartItem "YutaniPistol_3D"
+   Player.StartItem "PistolClip", 48
+   Player.StartItem "Apesuit"
+   Player.StartItem "AutoTurret", 1
+   Player.StartItem "Flare", 8
+   Player.StartItem "YPistolLoaded", 18
+   Player.StartItem "YutanithrowerLoaded", 150
+   Player.StartItem "Gas", 150
+   Player.StartItem "DryFlames", 1
+   Player.StartItem "CMShot", 6
+   Player.ForwardMove 0.7
+   Player.SideMove 0.7
+
+   States
+	{   
+ 	Spawn:
+		TNT1 A 0
+		ATSL A -1		
+		Goto See 
+	See:
+		TNT1 A 0 	
+		ATSL ABCDEFG 4
+		Loop
+ 	Missile:
+		TNT1 A 0 	
+		ATSL IH 12
+		Goto See
+	Melee:
+		TNT1 A 0 	
+		ATSL JI 6 BRIGHT
+		Goto Missile
+	Pain:
+		TNT1 A 0 A_PlaySound("FEMPAIN")	
+		ATSL QRS 4 
+ 		Goto Spawn
+    Death:
+		ATSL T 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATSL U 8
+		ATSL V 8 A_NoBlocking
+		ATSL W 8
+		ATSZ A -1
+		Stop
+		Death.hugger:
+			  TNT1 A 0 ACS_ExecuteAlways(768, 0,0,0)
+              TNT1 A 0 A_PlaySound("FEMDEAD")
+              TNT1 A 0
+              TNT1 A 0 A_NoBlocking
+              HUGG V -1
+              stop
+	 XDeath:
+		ATSL T 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("NormalBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		ATSL U 8
+		ATSL V 8 A_NoBlocking
+		ATSL W 8
+		ATSZ A -1
+		Stop
+	
+	}
+}
+
+
+Actor SyntheticPlayer : DoomPlayer
+{
++NOTELEFRAG
+   Species "Marines"
+	damagefactor "MarineTarget", 0.8
+	damagefactor "AlienTarget", 0.8
+	damagefactor "DroidTarget", 0.8
+	damagefactor "PredatorTarget", 0.8
+    damagefactor "Turret", 0.1
+    //damagefactor "Hugger", 0.0
+	Bloodtype "WhiteBlood"
+	Bloodcolor "White"
+	Painsound "SYNTPN2"
+    Deathsound "SYNTDIE"
+	Scale 0.565
+   Player.DisplayName "Combat_Synthetic"
+   Player.Soundclass "Synth"
+   Player.StartItem "SynthStartItem", 1
+   Player.StartItem "SyntheticClass", 1
+   Player.StartItem "IsPlayer", 1
+   Player.StartItem "TargetIsAMarine", 1
+   Player.StartItem "Smartgun_3D", 1
+   Player.StartItem "MapRevealer", 1
+   Player.StartItem "Knife_3D", 1
+   Player.StartItem "SynthPistol_3D", 1
+   Player.StartItem "PistolClip", 48
+   Player.StartItem "ShotgunLoaded", 8
+   Player.StartItem "PulseLoaded", 95
+   Player.StartItem "FlamethrowerLoaded", 150
+   Player.StartItem "ColonialmarineArmor", 1
+   Player.StartItem "Flare", 8
+   Player.StartItem "AutoTurret", 1
+   Player.StartItem "Satcheler_3D", 1
+   Player.StartItem "SatchelAmmo", 1
+   Player.StartItem "SynthLoaded", 30
+   Player.StartItem "SmartLoaded", 150
+   Player.StartItem "Smartgunbullets" 300
+   Player.StartItem "DryFlames", 1
+   Player.StartItem "CMShot", 6
+   Player.ForwardMove 0.7
+   Player.SideMove 0.7
+
+   States
+	{   
+ 	Spawn:
+		TNT1 A 0 	
+		SYNT A -1		
+		Goto See 
+	See:
+		TNT1 A 0 	
+		SYNT ABCDEFG 4
+		Loop
+ 	Missile:
+		TNT1 A 0 	
+		SYNT IJ 12
+		Goto See
+	Melee:
+		TNT1 A 0 	
+		SYNT J 6 BRIGHT
+		Goto Missile
+	Pain:
+		TNT1 A 0
+		SYNT H 4 
+ 		Goto Spawn
+Death:
+		TNT1 A 0
+		TNT1 A 0 A_Jump(255, "Death1")
+		
+	Death1:
+		SYNT K 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("WhiteBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingWhiteBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		SYNT L 8 A_NoBlocking
+		SYNT M 8
+		SYNT N -1
+		Stop
+		
+	XDeath:
+		SYNT K 6 A_Scream
+		TNT1 AAA 0 A_SpawnItem("WhiteBlood", 0, 45)
+		EXPL A 0 A_CustomMissile ("FlyingWhiteBlood1", 45, 0, random (0, 360), 2, random (40, 90))
+		SYNT L 8 A_NoBlocking
+		SYNT M 8
+		SYNT N -1
+		Stop
+	}
+}
+
+//Dummy items to check at first spawn
+Actor ColonistStartItem: Inventory
+{
+	Inventory.maxamount 1
+}
+Actor MercStartItem: Inventory
+{
+	Inventory.maxamount 1
+}
+Actor YutaniStartItem: Inventory
+{
+	Inventory.maxamount 1
+}
+Actor SynthStartItem: Inventory
+{
+	Inventory.maxamount 1
+}

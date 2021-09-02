@@ -1,0 +1,630 @@
+//SHOTGUN
+
+ACTOR NewShotgun_3D : NewShotgun replaces NewShotgun
+{
+  States
+  {
+  Ready:
+    ATSG A 0 ACS_NamedExecuteAlways("LOADDOWN", 0, 20, 56)
+	//ATSG A 0 A_JumpifInventory("NormalStance", 1, "RealReady")
+	//TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightReady")	 
+    ATSG A 1
+    //goto RealReady
+  RealReady:
+	//TNT1 A 0 Bright A_ZoomFactor(1.0)
+	ATSG A 0 A_SetSpeed (0.7)
+	ATSG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+	TNT1 A 0	
+     Goto Ready
+	 /*
+  SightReady:
+     TNT1 A 0 Bright A_ZoomFactor(1.4)
+	 TNT1 A 0 A_SetSpeed (0.5)
+     TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "SightReady2")
+     SHSI A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+  SightReady2:
+     SHSI A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+	 */
+  Deselect:
+    //TNT1 A 0 Bright A_ZoomFactor(1.0)
+	ATSG A 0 A_SetSpeed (0.7)
+	//ATSG A 0 A_TakeInventory("NormalStance", 1)
+    //TNT1 A 0 A_TakeInventory("IsSight", 1)
+    ATSG A 1 A_Lower(12)
+    Loop
+  Select:
+    //ATSG A 0 A_GiveInventory("NormalStance", 1)
+	//TNT1 A 0 A_TakeInventory("IsSight", 1)
+    ATSG A 1 A_Raise(12)
+    Loop
+  Dryfire:
+    //TNT1 A 0 A_JumpifInventory("IsSight", 1, "IronSightDryFire")
+	ATSG A 2 A_PlaySound("DRYFIRE")
+	Goto Reload
+	/*
+  IronSightDryFire:
+     SHSI A 15 A_PlaySound("DRYFIRE", 1)
+     Goto Reload
+	 */
+  Fire:
+	/*
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightFire")
+    TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "Fire2")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	ATSG A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-5, 2))
+	ATSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	ATSG BC 2 Bright
+	ATSG A 1
+	ATSG A 1 A_PlaySound("STGNPUMP")
+	ATSG DDEEFFEEDD 1
+	ATSG A 2
+	*/
+    ATSG A 0 A_JumpIfNoAmmo("Dryfire")
+    ATSG A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "Fire2")
+	ATSG A 0 A_GunFlash
+	ATSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    ATSG A 0 A_AlertMonsters
+	ATSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	ATSG A 0 Radius_Quake (1, 2, 0, 1, 0)
+	ATSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	ATSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-5, 2))
+	ATSG B 1 Bright A_Light(5)
+	ATSG CD 2 Bright
+	ATSG EFGH 1
+	ATSG I 1 A_PlaySound("STGNPUMP")
+	ATSG JKLM 1
+	ATSG N 1 A_Refire
+	"####" # 0 A_JumpIf(GetCVAR("avw_weapons")==0, "Ready")
+	"####" # 0 A_FireProjectile("ShotgunBarrelSmoke",0,0,0,0,FPF_NOAUTOAIM,0)
+    Goto Ready
+  Fire2:
+	/*
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightFire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	ATSG A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	ATSG BC 2 Bright
+	ATSG A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.70)
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	ATSG BC 2 Bright
+	ATSG A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.75)
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	ATSG BC 2 Bright
+	ATSG A 1 
+	ATSG A 1 A_PlaySound("STGNPUMP")
+	ATSG DDEEFFEEDD 1
+	ATSG A 2 A_JumpIfNoAmmo("Dryfire")
+	*/
+    ATSG A 0 A_JumpIfNoAmmo("Dryfire")
+	ATSG A 0 A_GunFlash
+	ATSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    ATSG A 0 A_AlertMonsters
+	ATSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	ATSG A 0 Radius_Quake (1, 2, 0, 1, 0)
+	ATSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	ATSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	ATSG CD 2 Bright
+    ATSG A 0 A_JumpIfNoAmmo("Dryfire")
+	ATSG A 0 A_GunFlash
+	ATSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+	ATSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	ATSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	ATSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	ATSG CD 2 Bright
+    ATSG A 0 A_JumpIfNoAmmo("Dryfire")
+	ATSG A 0 A_GunFlash
+	ATSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+	ATSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	ATSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	ATSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	ATSG B 1 Bright A_Light(5)
+	ATSG CD 2 Bright
+	ATSG EFGH 1
+	ATSG I 1 A_PlaySound("STGNPUMP")
+	ATSG JKLMN 1
+	ATSG A 4
+	"####" # 0 A_JumpIf(GetCVAR("avw_weapons")==0, "Ready")
+	"####" # 0 A_FireProjectile("ShotgunBarrelSmoke",0,0,0,0,FPF_NOAUTOAIM,0)
+	Goto Ready
+	/*
+  SightFire:
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+    TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "SightFire2")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	SHSI A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	SHSI B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	SHSI BC 2 Bright
+	SHSI A 1
+	SHSI A 1 A_PlaySound("STGNPUMP")
+	ATSG DDEEFFEEDD 1
+	ATSG A 2
+	Goto Ready 
+  SightFire2:	
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	SHSI A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	SHSI B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	SHSI BC 2 Bright
+	SHSI A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.70)
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	SHSI B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	SHSI BC 2 Bright
+	SHSI A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.75)
+	TNT1 A 0 A_TakeInventory("ShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	SHSI B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	SHSI BC 2 Bright
+	SHSI A 1 
+	SHSI A 1 A_PlaySound("STGNPUMP")
+	ATSG DDEEFFEEDD 1
+	ATSG A 2 A_JumpIfNoAmmo("Dryfire")
+	Goto Ready
+	*/
+  AltFire:
+    ATSG A 0 A_JumpIfInventory("ShotgunBurstAlt", 0, "AltFire2")
+	ATSG A 0 A_GiveInventory("ShotgunBurstAlt", 1) 
+	ATSG A 0
+	/*
+	ATSG DE 4 A_PlaySound("FLAMPICK")
+	ATSG F 2
+	*/
+	ATSG E 1 A_PlaySound("FLAMPICK")
+	ATSG FGH 1
+	ATSG I 1 A_PlaySound("STGNPUMP")
+	ATSG JKLMN 1
+	Goto Ready 
+  AltFire2:
+	ATSG A 0
+	ATSG A 0 A_TakeInventory("ShotgunBurstAlt", 1)
+	/*
+	ATSG DE 4 A_PlaySound("FLAMPICK")
+	ATSG F 2
+	*/
+	ATSG E 1 A_PlaySound("FLAMPICK")
+	ATSG FGH 1
+	ATSG I 1 A_PlaySound("STGNPUMP")
+	ATSG JKLMN 1
+	Goto Ready 
+		Reload:
+  ATSG A 0 A_JumpIfInventory("ShotgunLoaded", 8, 2)
+  ATSG A 0 A_JumpIfInventory("AliensShell", 1, "ReloadWork")
+  ATSG A 0 
+  Goto Ready
+  ReloadWork:
+		//TNT1 A 0 Bright A_ZoomFactor(1.0)
+		ATSG A 0 A_SetSpeed (0.7)
+		//TNT1 A 0 A_SetCrosshair(0)
+		//ATSG A 0 A_GiveInventory("NormalStance", 1)
+		//TNT1 A 0 A_TakeInventory("IsSight", 1)
+		/*
+	   ATSG DDDEEEFFFFF 1
+	   ATSG D 1 Offset(0,45)
+	   */
+	   ATSR ABCD 3
+  ReloadLoop:
+	/*
+	ATSG E 2 Offset(0,45)
+	TNT1 A 0 A_TakeInventory("AliensShell", 1)
+    ATSG F 2 Offset(0,47)
+    ATSG F 2 Offset(2,50) A_PlaySound("SHELLIN")
+    TNT1 A 0 A_GiveInventory("ShotgunLoaded", 1)
+	ATSG F 2 Offset(4,52) A_WeaponReady
+	ATSG F 2 Offset(6,45) A_WeaponReady
+    ATSG F 2 Offset(2,40) A_WeaponReady
+    ATSG F 2 Offset(0,45) A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("ShotgunLoaded", 8, "ReloadFinish")
+    TNT1 A 0 A_JumpIfInventory("AliensShell", 1, "ReloadLoop")
+    Goto ReloadFinish
+	ReloadFinish:
+	ATSG FEDA 2 A_WeaponReady
+	*/
+	ATSR D 0 A_TakeInventory("AliensShell", 1)
+    ATSR D 0 A_GiveInventory("ShotgunLoaded", 1)
+	ATSR EFGHI 2
+	ATSR J 2 A_PlaySound("SHELLIN")
+	ATSR K 2
+	ATSR D 0 A_JumpIfInventory("ShotgunLoaded", 8, "ReloadFinish")
+    ATSR D 0 A_JumpIfInventory("AliensShell", 1, "ReloadLoop")
+	Goto Ready
+  Flash:
+	TNT1 A 0 A_JumpIf(GetCVAR("avw_weapons_mf")==1, "MuzzleFlash")
+    TNT1 A 0 Bright A_Light1
+    TNT1 B 0 Bright A_Light2
+    Goto LightDone
+  MuzzleFlash:
+    SGMF A 2 Bright
+    SGMF B 2 Bright A_Light2
+    TNT1 A 1 Bright A_Light1
+    TNT1 A 1 Bright A_Light0
+	stop
+  Spawn:
+	SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==1, "Spawn3D")
+    SHOT A 1
+    Stop
+  Spawn3D:
+	SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==0, "Spawn")
+    SHOT P 1 Bright
+    Stop
+  }
+}
+
+
+ACTOR YutaniShotgun_3D : YutaniShotgun replaces YutaniShotgun
+{
+  States
+  {
+  Ready:
+    YTSG A 0 ACS_NamedExecuteAlways("LOADDOWN", 0, 20, 56)
+	//YTSG A 0 A_JumpifInventory("NormalStance", 1, "RealReady")
+	//TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightReady")
+    YTSG A 1
+    //goto RealReady
+  RealReady:
+    //TNT1 A 0 Bright A_ZoomFactor(1.0)
+	YTSG A 0 A_SetSpeed (0.7)
+	YTSG A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+	YTSG A 0 	
+     Goto Ready
+	/*
+  SightReady:
+     TNT1 A 0 Bright A_ZoomFactor(1.4)
+	 TNT1 A 0 A_SetSpeed (0.5)
+     TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "SightReady2")
+     YTIS A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+  SightReady2:
+     YTIS A 1 A_WeaponReady(WRF_ALLOWRELOAD)
+     Goto Ready
+	*/
+  Deselect:
+    //TNT1 A 0 Bright A_ZoomFactor(1.0)
+	YTSG A 0 A_SetSpeed (0.7)
+	//YTSG A 0 A_TakeInventory("NormalStance", 1)
+    //TNT1 A 0 A_TakeInventory("IsSight", 1)
+    YTSG A 1 A_Lower(12)
+    Loop
+  Select:
+    //YTSG A 0 A_GiveInventory("NormalStance", 1)
+	//TNT1 A 0 A_TakeInventory("IsSight", 1)
+    YTSG A 1 A_Raise(12)
+    Loop
+  Dryfire:
+    //TNT1 A 0 A_JumpifInventory("IsSight", 1, "IronSightDryFire")
+	YTSG A 2 A_PlaySound("DRYFIRE")
+	Goto Reload
+  IronSightDryFire:
+     YTIS A 15 A_PlaySound("DRYFIRE", 1)
+     Goto Reload
+  Fire:
+	/*
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightFire")
+    TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "Fire2")
+	TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "Fire2")
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTSG A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-5, 2))
+	YTSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTSG BC 2 Bright
+	YTSG A 1
+	YTSG A 1 A_PlaySound("STGNPUMP")
+	YTSG DDEEFFEEDD 1
+	YTSG A 2
+	*/
+    YTSG A 0 A_JumpIfNoAmmo("Dryfire")
+    YTSG A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "Fire2")
+	YTSG A 0 A_GunFlash
+	YTSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    YTSG A 0 A_AlertMonsters
+	YTSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	YTSG A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	YTSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-5, 2))
+	YTSG B 1 Bright A_Light(5)
+	YTSG CD 2 Bright
+	YTSG EFGH 1
+	YTSG I 1 A_PlaySound("STGNPUMP")
+	YTSG JKLM 1
+	YTSG N 1 A_Refire
+	"####" # 0 A_JumpIf(GetCVAR("avw_weapons")==0, "Ready")
+	"####" # 0 A_FireProjectile("ShotgunBarrelSmoke",0,0,0,0,FPF_NOAUTOAIM,0)
+    Goto Ready
+  Fire2:
+	/*
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_JumpifInventory("IsSight", 1, "SightFire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTSG A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTSG BC 2 Bright
+	YTSG A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.70)
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTSG BC 2 Bright
+	YTSG A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.75)
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTSG BC 2 Bright
+	YTSG A 1 
+	YTSG A 1 A_PlaySound("STGNPUMP")
+	YTSG DDEEFFEEDD 1
+	YTSG A 2 A_JumpIfNoAmmo("Dryfire")
+	*/
+    YTSG A 0 A_JumpIfNoAmmo("Dryfire")
+	YTSG A 0 A_GunFlash
+	YTSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    YTSG A 0 A_AlertMonsters
+	YTSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	YTSG A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	YTSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	YTSG CD 2 Bright
+    YTSG A 0 A_JumpIfNoAmmo("Dryfire")
+	YTSG A 0 A_GunFlash
+	YTSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+	YTSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	YTSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	YTSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	YTSG CD 2 Bright
+    YTSG A 0 A_JumpIfNoAmmo("Dryfire")
+	YTSG A 0 A_GunFlash
+	YTSG A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+	YTSG A 0 A_TakeInventory("ShotgunLoaded", 1)
+	YTSG B 1 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+	YTSG BBBBBBB 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-4, 4), 0, 3, -2, 0, random(-4, 2))
+	YTSG B 1 Bright A_Light(5)
+	YTSG CD 2 Bright
+	YTSG EFGH 1
+	YTSG I 1 A_PlaySound("STGNPUMP")
+	YTSG JKLMN 1
+	YTSG A 4
+	"####" # 0 A_JumpIf(GetCVAR("avw_weapons")==0, "Ready")
+	"####" # 0 A_FireProjectile("ShotgunBarrelSmoke",0,0,0,0,FPF_NOAUTOAIM,0)
+	Goto Ready
+	/*
+  SightFire:
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+    TNT1 A 0 A_JumpIfInventory("ShotgunBurstAlt", 1, "SightFire2")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.80)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTIS A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	YTIS B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTIS BC 2 Bright
+	YTIS A 1
+	YTIS A 1 A_PlaySound("STGNPUMP")
+	YTSG DDEEFFEEDD 1
+	YTSG A 2
+	Goto Ready 
+  SightFire2:	
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.60)
+    TNT1 A 0 A_AlertMonsters
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+	TNT1 A 0 Radius_Quake (1, 2, 0, 1, 0)
+	YTIS A 1
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	YTIS B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTIS BC 2 Bright
+	YTIS A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.70)
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	YTIS B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTIS BC 2 Bright
+	YTIS A 1 
+    TNT1 A 0 A_JumpIfNoAmmo("Dryfire")
+	TNT1 A 0 A_PlaySound ("ASLTSHOT", 1, 0.75)
+	TNT1 A 0 A_TakeInventory("YShotgunLoaded", 1)
+    TNT1 A 0 A_FireCustomMissile("DummyProjectile1", 0, 0, 0, 0, 0, 0)
+    TNT1 AAAAAAA 0 BRIGHT A_FireProjectile("ShotgunTracer", random(-3, 3), 0, 8, 0, 0, random(-3, 1))
+	YTIS B 1 Bright A_Light(5)
+	TNT1 A 0 Bright A_GunFlash
+	YTIS BC 2 Bright
+	YTIS A 1 
+	YTIS A 1 A_PlaySound("STGNPUMP")
+	YTSG DDEEFFEEDD 1
+	YTSG A 2 A_JumpIfNoAmmo("Dryfire")
+	Goto Ready 
+	*/
+  AltFire:
+    YTSG A 0 A_JumpIfInventory("ShotgunBurstAlt", 0, "AltFire2")
+	YTSG A 0 A_GiveInventory("ShotgunBurstAlt", 1) 
+	YTSG A 0
+	/*	
+	YTSG DE 4 A_PlaySound("FLAMPICK")
+	YTSG F 2
+	*/
+	YTSG E 1 A_PlaySound("FLAMPICK")
+	YTSG FGH 1
+	YTSG I 1 A_PlaySound("STGNPUMP")
+	YTSG JKLMN 1
+	Goto Ready 
+  AltFire2:
+	YTSG A 0
+	YTSG A 0 A_TakeInventory("ShotgunBurstAlt", 1)
+	/*
+	YTSG DE 4 A_PlaySound("FLAMPICK")
+	YTSG F 2
+	*/
+	YTSG E 1 A_PlaySound("FLAMPICK")
+	YTSG FGH 1
+	YTSG I 1 A_PlaySound("STGNPUMP")
+	YTSG JKLMN 1
+	Goto Ready 
+		Reload:
+  YTSG A 0 A_JumpIfInventory("YShotgunLoaded", 8, 2)
+  YTSG A 0 A_JumpIfInventory("AliensShell", 1, "ReloadWork")
+  YTSG A 0 
+  Goto Ready
+  ReloadWork:
+		//TNT1 A 0 Bright A_ZoomFactor(1.0)
+		YTSG A 0 A_SetSpeed (0.7)
+		//TNT1 A 0 A_SetCrosshair(0)
+		//YTSG A 0 A_GiveInventory("NormalStance", 1)
+		//TNT1 A 0 A_TakeInventory("IsSight", 1)
+		/*
+	   YTSG DDDEEEFFFFF 1
+	   YTSG D 1 Offset(0,45)
+	   */
+	   YTSR ABCD 3
+  ReloadLoop:
+	/*
+	YTSG E 2 Offset(0,45)
+	TNT1 A 0 A_TakeInventory("AliensShell", 1)
+    YTSG F 2 Offset(0,47)
+    YTSG F 2 Offset(2,50) A_PlaySound("SHELLIN")
+    TNT1 A 0 A_GiveInventory("YShotgunLoaded", 1)
+	YTSG F 2 Offset(4,52) A_WeaponReady
+	YTSG F 2 Offset(6,45) A_WeaponReady
+    YTSG F 2 Offset(2,40) A_WeaponReady
+    YTSG F 2 Offset(0,45) A_WeaponReady
+	TNT1 A 0 A_JumpIfInventory("YShotgunLoaded", 8, "ReloadFinish")
+    TNT1 A 0 A_JumpIfInventory("AliensShell", 1, "ReloadLoop")
+	*/
+	YTSR D 0 A_TakeInventory("AliensShell", 1)
+    YTSR D 0 A_GiveInventory("ShotgunLoaded", 1)
+	YTSR EFGHIJK 2
+	YTSR D 0 A_JumpIfInventory("ShotgunLoaded", 8, "ReloadFinish")
+    YTSR D 0 A_JumpIfInventory("AliensShell", 1, "ReloadLoop")
+    Goto ReloadFinish
+	ReloadFinish:
+	//YTSG FEDA 2 A_WeaponReady
+	Goto Ready
+  Flash:
+	TNT1 A 0 A_JumpIf(GetCVAR("avw_weapons_mf")==1, "MuzzleFlash")
+    TNT1 A 0 Bright A_Light1
+    TNT1 B 0 Bright A_Light2
+    Goto LightDone
+  MuzzleFlash:
+    SGMF A 2 Bright
+    SGMF B 2 Bright A_Light2
+    TNT1 A 1 Bright A_Light1
+    TNT1 A 1 Bright A_Light0
+	stop
+  Spawn:
+	SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==1, "Spawn3D")
+    SHOT A 1
+    Stop
+  Spawn3D:
+	SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==0, "Spawn")
+    SHOT P 1 Bright
+    Stop
+  }
+}
+
+ACTOR NewShotgunspawner : Shotgunspawner replaces Shotgunspawner
+{
+	States
+	{
+	Spawn:
+		SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==1, "Spawn3D")
+		SHOT A 1
+		Loop
+	Spawn3D:
+		SHOT A 0 A_JumpIf(GetCVAR("avw_pickupmodel")==0, "Spawn")
+		SHOT P 1 Bright
+		Loop
+	Pickup.ColonistClass:
+		TNT1 A 0 A_GiveInventory("NewShotgun_3D",1)
+		Stop
+	Pickup.MercenaryClass:
+		TNT1 A 0 A_GiveInventory("NewShotgun_3D",1)
+		Stop
+	Pickup.YutaniClass:
+		TNT1 A 0 A_GiveInventory("YutaniShotgun_3D",1)
+		Stop
+	Pickup.SyntheticClass:
+		TNT1 A 0 A_GiveInventory("NewShotgun_3D",1)
+		Stop
+	}
+}
+
+ACTOR ShotgunBurstAlt : Inventory
+{
+Inventory.Amount 1
+}

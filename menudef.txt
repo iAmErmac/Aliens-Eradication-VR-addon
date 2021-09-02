@@ -1,0 +1,90 @@
+AddOptionMenu "OptionsMenu"
+{
+	StaticText " "
+	Submenu "Aliens VR Settings", "AVRW_Settings"
+	Submenu "SuperHuman abilities", "AVW_SH_Settings"
+	Submenu "Weather FX Settings", "AWTH_Settings"
+}
+
+OptionMenu "AVRW_Settings" {
+	Title "Aliens VR Settings"
+	StaticText " "
+	
+	Option "Pickup graphics", "avw_pickupmodel", "VR_PickupModel_Option"
+	Option "Weapons mode", "avw_weapons", "VR_Weapons_Option"
+	Option "Muzzle Flash sprite", "avw_weapons_mf", "OnOff"
+	Option "Bullet tracer", "avw_tracers", "OnOff"
+	StaticText " "
+	StaticText "Infrared Vision", "Gold"
+	Option "Infrared vision", "avw_infra_vision", "VR_InfraVision_Option"
+	Control "Infrared vision toggle", "netevent \"alien_vision\""
+	StaticText " "
+	StaticText "Performance setting", "Gold"
+	StaticText "*Requires a map restart", "Grey"
+	Option "Reduce environmental garbages", "avw_remove_garbage", "OnOff"
+	Option "Remove ceiling light sources", "avw_remove_strobelight", "OnOff"
+	Option "Remove floor light sources", "avw_remove_lamps", "OnOff"
+}
+
+OptionMenu "AVW_SH_Settings" {
+	Title "SuperHuman abilities"
+	StaticText " "
+	
+	Slider "Weapon Damage Multiplier", "avw_damage_mult", "1.0", "10.0", "0.5"
+	Slider "Jump Strength", "avw_jump_mult", "1.0", "5.0", "0.5"
+	Slider "Sprint speed", "avw_speed_mult", "0.5", "3.0", "0.5"
+	StaticText " "
+	StaticText "Health regenration", "Gold"
+	Option "Auto regenrate health", "avw_health_regen", "OnOff"
+	Option "Critical health regeneration only", "avw_critical_heal", "OnOff", "avw_health_regen"
+	StaticText "With this option enabled health will be regenrated up to 30 points only", "DarkGrey"
+	Slider "Regenration interval (in sec)", "avw_regen_time", "0.5", "10.0", "0.5", "1", "avw_health_regen"
+	StaticText " "
+	StaticText "Forward dash", "Gold"
+	Control "Dash move", "netevent \"sh_dash\""
+	Option "Double dash", "avw_double_dash", "OnOff"
+	Slider "Dash distance", "avw_dash_mult", "0.5", "3.0", "0.5"
+	Slider "Dash cooldown (sec)", "avw_dash_cooldown", "0", "5.0", "0.5"
+	StaticText " "
+	StaticText "Double jumping", "Gold"
+	StaticText "Jump higher when pressing jump button twice", "DarkGrey"
+	Option "Double jump", "avw_double_jump", "OnOff"
+	StaticText " "
+	StaticText "Ledge climbing", "Gold"
+	StaticText "Hold jump near a ledge to start climbing", "DarkGrey"
+	Option "Ledge climb", "avw_ledge_climb", "OnOff"
+}
+
+OptionMenu "AWTH_Settings" {
+	Title "Weather FX Settings"
+	StaticText " "
+	
+	Option "Heavy Raining", "CWE_weather_type", "Aliens_weather_rain"
+	Option "Thunderstorm", "CWE_rain_thunder", "OnOff", "CWE_weather_type"
+	Slider "Heavy rain frequency", "CWE_intensity", 0.0, 10.0, 1.0
+	StaticText "Rain frequency value: 0 = Maximum, 10 = Minimum"
+}
+
+OptionValue "Aliens_weather_rain" {
+	2, "On"
+	0, "Off"
+}
+
+OptionValue "VR_Weapons_Option" {
+	0, "Default"
+	1, "Enhanced"
+}
+
+OptionValue "VR_PickupModel_Option" {
+	0, "Sprite"
+	1, "3D"
+}
+
+OptionValue "VR_InfraVision_Option" {
+	0, "Disabled"
+	1, "Night Vision"
+	2, "Proto Vision"
+	3, "Gold Vision"
+	4, "Grey Vision"
+	5, "Red Vision"
+}

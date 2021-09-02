@@ -1,0 +1,174 @@
+
+/*
+//Replace default inventory items
+Class AEMarineInventoryReplace: EventHandler
+{
+	Actor Dplayer;
+	override void WorldThingSpawned (WorldEvent e)
+	{		
+		Actor item = e.thing;
+		
+		//get the player class to use later
+		if(e.Thing is "PlayerPawn")
+		{
+			Dplayer = e.Thing;
+		}
+		
+		if(item.getClassName() == 'Knife')
+		{
+			if(Inventory(item).Amount > 0)
+			{
+				Dplayer.A_Takeinventory("Knife", 1);
+				Dplayer.A_GiveInventory('Knife_3D', 1);
+				
+			}
+		}
+}
+*/
+
+Class AliensWeaponReplace: EventHandler
+{
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		switch(GetDefaultByType(e.Replacee).GetSpecies())
+		{
+			case 'Pistol': e.Replacement = 'Pistolspawner';  break;
+			case 'Shotgun': e.Replacement = 'SmallWeaponReplacer2';  break;
+			case 'SuperShotgun': e.Replacement = 'SmallWeaponReplacer3';  break;
+			case 'Chainsaw': e.Replacement = 'SmallWeaponReplacer1';  break;
+			case 'Chaingun': e.Replacement = 'MediumWeaponReplacer2';  break;
+			case 'RocketLauncher': e.Replacement = 'BigWeaponReplacer2';  break;
+			case 'PlasmaRifle': e.Replacement = 'MediumWeaponReplacer1';  break;
+			case 'BFG9000': e.Replacement = 'BigWeaponReplacer1';  break;
+		}
+	}
+}
+
+//Remove garbage items to improve performance
+Class AEnvItemReplace: EventHandler
+{	
+	override void CheckReplacement(ReplaceEvent e)
+	{
+		if(avw_remove_garbage)
+		{
+			switch (e.Replacee.GetClassName())
+			{
+				//replace enviromental garbages
+				case 'Alientrilogybox' : e.Replacement = 'AEDummyItem';  break;
+				case 'Alientrilogyboxes' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottle' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleTippedLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleTippedRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleBrokenLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleBrokenRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleLowerBrokenLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'GlassBottleRightBrokenRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottle' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleTippedLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleTippedRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleBrokenLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleBrokenRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleLowerBrokenLeft' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealGlassBottleRightBrokenRight' : e.Replacement = 'AEDummyItem';  break;
+				case 'Cone' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealCone' : e.Replacement = 'AEDummyItem';  break;
+				case 'Handtruck2' : e.Replacement = 'AEDummyItem';  break;
+				case 'HandtruckpalletBigbox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'HandtruckpalletBigbox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Handtruckpalletcarboardbox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Handtruckpallet1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Handtruckpallet2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruck1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruck2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpalletBigbox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpalletBigbox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpalletcarboardbox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpalletcarboardbox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpallet1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealHandtruckpallet2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Bluecase1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Bluecase2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Bluecasestack1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Bluecasestack2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBluecase1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBluecase2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBluecasestack1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBluecasestack2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Silvercase1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Silvercase2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Silvercasestack1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Silvercasestack2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSilvercase1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSilvercase2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSilvercasestack1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSilvercasestack2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Bigbox' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBigbox' : e.Replacement = 'AEDummyItem';  break;
+				case 'OrangeBox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'OrangeBox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealOrangeBox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealOrangeBox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Smallorangebox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Smallorangebox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSmallorangebox1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealSmallorangebox2' : e.Replacement = 'AEDummyItem';  break;
+				case 'FireExtinguisher' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealFireExtinguisher' : e.Replacement = 'AEDummyItem';  break;
+				case 'BlueBarrel' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealBlueBarrel' : e.Replacement = 'AEDummyItem';  break;
+				case 'Cardboardbox' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealCardboardbox' : e.Replacement = 'AEDummyItem';  break;
+				case 'PaperMess' : e.Replacement = 'AEDummyItem';  break;
+				case 'Airtank' : e.Replacement = 'AEDummyItem';  break;
+				case 'Airtanks1' : e.Replacement = 'AEDummyItem';  break;
+				case 'Airtanks2' : e.Replacement = 'AEDummyItem';  break;
+				case 'Airtanks3' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealAirtank' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealAirtanks1' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealAirtanks2' : e.Replacement = 'AEDummyItem';  break;
+				case 'RealAirtanks3' : e.Replacement = 'AEDummyItem';  break;
+			}
+		}
+		
+		if(avw_remove_strobelight)
+		{
+			switch (e.Replacee.GetClassName())
+			{
+				//remove ceiling lights
+				case 'StrobeLightBlue' : e.Replacement = 'AEDummyItem';  break;
+				case 'StrobeLightGreen' : e.Replacement = 'AEDummyItem';  break;
+				case 'StrobeLightRed' : e.Replacement = 'AEDummyItem';  break;
+				case 'StrobeLightYellow' : e.Replacement = 'AEDummyItem';  break;
+			}
+		}
+		
+		if(avw_remove_lamps)
+		{
+			switch (e.Replacee.GetClassName())
+			{
+				//remove floor lamps
+				case 'Redlamp' : e.Replacement = 'AEDummyItem';  break;
+				case 'FloorLampblue' : e.Replacement = 'AEDummyItem';  break;
+				case 'FloorLampBig1' : e.Replacement = 'AEDummyItem';  break;
+				case 'FloorLampBig2' : e.Replacement = 'AEDummyItem';  break;
+			}
+		}
+		
+		//Generic replacement fixes
+		switch (e.Replacee.GetClassName())
+		{
+			case 'YutaniClip' :
+			case 'SynthClip' : e.Replacement = 'PistolClip';  break;
+		}
+	}
+}
+
+Class AEDummyItem: Actor
+{
+	States
+	{
+	Spawn:
+		TNT1 A 1;
+		Stop;
+	}
+}

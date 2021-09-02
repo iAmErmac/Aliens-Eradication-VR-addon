@@ -1,0 +1,60 @@
+class weather_definition
+{
+void create_weather(in out array<string> data, in out array<parsed_weather> ready_data)
+{
+    if(data.size() > 0)
+    {
+        for(uint i = 0; i < data.size(); i++)
+        {
+            if(data[i] == "map")
+            {
+                parsed_weather pw = parsed_weather(new("parsed_weather") );
+                if(data[i+1].toint(10) > 0 && data[i+2] == "{")
+                {
+                    //assuming that data format is correct
+                    pw.level_number = data[i+1].toint(10);
+                    if(data[i+3] == "weather")
+                    {
+                        switch(name(data[i+5]) )
+                        {
+                            default:
+                                console.printf("incorrect weather format");
+                            break;
+
+                            case 'snow':
+                                pw.weather_type = CWE_SNOW;
+                            break;
+
+                            case 'rain':
+                                pw.weather_type = CWE_RAIN;
+                            break;
+
+                            case 'ash':
+                                pw.weather_type = CWE_ASH;
+                            break;
+                        }
+                    }
+                    else
+                        console.printf("incorrect symbols %s", data[i+3]);
+
+                    if(data[i+7] == "intensity")
+                    {
+                        pw.intensity = data[i+9].toint(10);
+                    }
+
+                    ready_data.push(pw);
+                }
+            }
+        }
+    }
+}
+
+}
+
+class parsed_weather
+{
+    int level_number;
+
+    int weather_type;
+    int intensity;
+}

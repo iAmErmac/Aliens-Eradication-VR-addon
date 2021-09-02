@@ -1,0 +1,380 @@
+
+Model M4A3Pistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	Skin 0 "m4a3.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	//Ready
+	FrameIndex MM91 A 0 0
+	
+	//Fire
+	FrameIndex MM91 B 0 1
+	FrameIndex MM91 C 0 2
+	FrameIndex MM91 D 0 3
+	FrameIndex MM91 E 0 4
+	FrameIndex MM91 F 0 5
+	
+	//Reload
+	FrameIndex MM91 G 0 6
+	FrameIndex MM91 H 0 7
+	
+	
+	//Insert new clip
+	FrameIndex MM91 M 0 11
+	FrameIndex MM91 N 0 12
+	FrameIndex MM91 O 0 13
+	FrameIndex MM91 P 0 14
+	FrameIndex MM91 Q 0 15
+	FrameIndex MM91 R 0 16
+	FrameIndex MM91 S 0 17
+	FrameIndex MM91 T 0 18
+	FrameIndex MM91 U 0 19
+}
+
+//Without magazine
+Model M4A3Pistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	SurfaceSkin 0 0 "m4a3.png"
+	SurfaceSkin 0 1 "m4a3.png"
+	SurfaceSkin 0 2 "m4a3.png"
+	SurfaceSkin 0 3 "m4a3.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+	
+	NOINTERPOLATION
+
+	//Drop clip
+	FrameIndex MM91 I 0 8
+	FrameIndex MM91 J 0 9
+	FrameIndex MM91 K 0 10
+	FrameIndex MM91 L 0 10
+}
+
+//Muzzle flash
+Model M4A3Pistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "pistol_mf.md3"
+	Skin 0 "pistol_mf.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	FrameIndex PSMF A 0 1
+	FrameIndex PSMF B 0 2
+}
+
+//Pickup model
+Model M4A3Pistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3_pickup.md3"
+	Skin 0 "m4a3.png"
+
+	Scale 3.5 3.5 3.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+	
+	FrameIndex M4A3 P 0 0
+}
+
+
+
+Model YutaniPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	Skin 0 "m4a3.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	//Ready
+	FrameIndex YM91 A 0 0
+	
+	//Fire
+	FrameIndex YM91 B 0 1
+	FrameIndex YM91 C 0 2
+	FrameIndex YM91 D 0 3
+	FrameIndex YM91 E 0 4
+	FrameIndex YM91 F 0 5
+	
+	//Reload
+	FrameIndex YM91 G 0 6
+	FrameIndex YM91 H 0 7
+	
+	//Drop clip
+	FrameIndex YM91 J 0 9
+	FrameIndex YM91 K 0 10
+	
+	//Insert new clip
+	FrameIndex YM91 M 0 11
+	FrameIndex YM91 N 0 12
+	FrameIndex YM91 O 0 13
+	FrameIndex YM91 P 0 14
+	FrameIndex YM91 Q 0 15
+	FrameIndex YM91 R 0 16
+	FrameIndex YM91 S 0 17
+	FrameIndex YM91 T 0 18
+	FrameIndex YM91 U 0 19
+}
+
+//Without magazine
+Model YutaniPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	SurfaceSkin 0 0 "m4a3.png"
+	SurfaceSkin 0 1 "m4a3.png"
+	SurfaceSkin 0 2 "m4a3.png"
+	SurfaceSkin 0 3 "m4a3.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+	
+	NOINTERPOLATION
+	
+	//Drop clip
+	FrameIndex YM91 I 0 8
+	FrameIndex YM91 J 0 9
+	FrameIndex YM91 K 0 10
+	FrameIndex YM91 L 0 10
+}
+
+//Muzzle flash
+Model YutaniPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "pistol_mf.md3"
+	Skin 0 "pistol_mf.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	FrameIndex PSMF A 0 1
+	FrameIndex PSMF B 0 2
+}
+
+//Pickup model
+Model YutaniPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3_pickup.md3"
+	Skin 0 "m4a3.png"
+
+	Scale 3.5 3.5 3.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+	
+	FrameIndex M4A3 P 0 0
+}
+
+
+
+Model MercPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	Skin 0 "m4a3.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	//Ready
+	FrameIndex MM91 A 0 0
+	
+	//Fire
+	FrameIndex MM91 B 0 1
+	FrameIndex MM91 C 0 2
+	FrameIndex MM91 D 0 3
+	FrameIndex MM91 E 0 4
+	FrameIndex MM91 F 0 5
+	
+	//Reload
+	FrameIndex MM91 G 0 6
+	FrameIndex MM91 H 0 7
+	
+	//Insert new clip
+	FrameIndex MM91 M 0 11
+	FrameIndex MM91 N 0 12
+	FrameIndex MM91 O 0 13
+	FrameIndex MM91 P 0 14
+	FrameIndex MM91 Q 0 15
+	FrameIndex MM91 R 0 16
+	FrameIndex MM91 S 0 17
+	FrameIndex MM91 T 0 18
+	FrameIndex MM91 U 0 19
+}
+
+//Without magazine
+Model MercPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	SurfaceSkin 0 0 "m4a3.png"
+	SurfaceSkin 0 1 "m4a3.png"
+	SurfaceSkin 0 2 "m4a3.png"
+	SurfaceSkin 0 3 "m4a3.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+	
+	NOINTERPOLATION
+	
+	//Drop clip
+	FrameIndex MM91 I 0 8
+	FrameIndex MM91 J 0 9
+	FrameIndex MM91 K 0 10
+	FrameIndex MM91 L 0 10
+}
+
+//Muzzle flash
+Model MercPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "pistol_mf.md3"
+	Skin 0 "pistol_mf.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	FrameIndex PSMF A 0 1
+	FrameIndex PSMF B 0 2
+}
+
+//Pickup model
+Model MercPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3_pickup.md3"
+	Skin 0 "m4a3.png"
+
+	Scale 3.5 3.5 3.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+	
+	FrameIndex M4A3 P 0 0
+}
+
+
+
+
+Model SynthPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	Skin 0 "m4a3.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	//Ready
+	FrameIndex MM91 A 0 0
+	
+	//Fire
+	FrameIndex MM91 B 0 1
+	FrameIndex MM91 C 0 2
+	FrameIndex MM91 D 0 3
+	FrameIndex MM91 E 0 4
+	FrameIndex MM91 F 0 5
+	
+	//Reload
+	FrameIndex MM91 G 0 6
+	FrameIndex MM91 H 0 7
+	
+	//Insert new clip
+	FrameIndex MM91 M 0 11
+	FrameIndex MM91 N 0 12
+	FrameIndex MM91 O 0 13
+	FrameIndex MM91 P 0 14
+	FrameIndex MM91 Q 0 15
+	FrameIndex MM91 R 0 16
+	FrameIndex MM91 S 0 17
+	FrameIndex MM91 T 0 18
+	FrameIndex MM91 U 0 19
+}
+
+//Without magazine
+Model SynthPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3.md3"
+	SurfaceSkin 0 0 "m4a3.png"
+	SurfaceSkin 0 1 "m4a3.png"
+	SurfaceSkin 0 2 "m4a3.png"
+	SurfaceSkin 0 3 "m4a3.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+	
+	NOINTERPOLATION
+	
+	//Drop clip
+	FrameIndex MM91 I 0 8
+	FrameIndex MM91 J 0 9
+	FrameIndex MM91 K 0 10
+	FrameIndex MM91 L 0 10
+}
+
+//Muzzle flash
+Model SynthPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "pistol_mf.md3"
+	Skin 0 "pistol_mf.png"
+
+	Scale -0.82 0.82 0.82
+	Offset 0.0 -33.0 -4.0
+
+	FrameIndex PSMF A 0 1
+	FrameIndex PSMF B 0 2
+}
+
+//Pickup model
+Model SynthPistol_3D
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3_pickup.md3"
+	Skin 0 "m4a3.png"
+
+	Scale 3.5 3.5 3.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+	
+	FrameIndex M4A3 P 0 0
+}
+
+//Pickup model
+Model NewPistolspawner
+{
+	Path "Models\Weapons\pistol"
+	Model 0 "m4a3_pickup.md3"
+	Skin 0 "m4a3.png"
+
+	Scale 3.5 3.5 3.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+	
+	FrameIndex M4A3 P 0 0
+}

@@ -1,0 +1,39 @@
+//turns weather on if true and off if false
+server bool CWE_weather = false;
+//how often snow/rain/etc effect spawns, greater numbers means less often 
+server int CWE_intensity = 0; //Max = 0, Min = 10
+//type of a weather; it use bitflags, so only power of two would work as intended, other can cause bugs
+server int CWE_weather_type = 0; //0 = off, 1 = snow, 2 = rain, 3 = ash
+//play rain sound or no
+server bool CWE_rain_sound = false;
+
+server bool CWE_rain_thunder = false;
+server bool CWE_thunder_activate = false; //this is for script to handle thunder when player is outside
+
+//debug cvar, set to true to instantly play thunder sound
+server noarchive bool  cwe_thunder_debug = false;
+
+
+//VR weapon settings
+server int avw_pickupmodel = 0;
+server int avw_weapons = 1;
+server bool avw_tracers = true;
+server bool avw_weapons_mf = true;
+server bool avw_remove_envitems = true;
+server bool avw_remove_garbage = true;
+server bool avw_remove_strobelight = true;
+server bool avw_remove_lamps = true;
+
+server float avw_damage_mult = 1.0;
+server float avw_jump_mult = 1.0;
+server float avw_speed_mult = 1.0;
+server float avw_dash_mult = 0.5;
+server float avw_dash_cooldown = 1.0;
+server bool avw_double_dash = false;
+server bool avw_double_jump = false;
+server bool avw_ledge_climb = false;
+server bool avw_health_regen = false;
+server bool avw_critical_heal = true;
+server float avw_regen_time = 5;
+
+server int avw_infra_vision = 0;

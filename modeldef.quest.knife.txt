@@ -1,0 +1,70 @@
+
+Model Knife_3D
+{
+	Path "Models\Weapons\knife"
+	Model 0 "knife.md3"
+	Skin 0 "knife.png"
+
+	Scale -0.65 0.65 0.65
+	Offset 0.0 -17.0 -7.0
+	
+	NOINTERPOLATION
+
+	//Ready
+	FrameIndex ATKN A 0 0
+
+	//Slash
+	FrameIndex ATKN B 0 1
+	FrameIndex ATKN C 0 2
+	FrameIndex ATKN D 0 3
+	FrameIndex ATKN E 0 4
+	FrameIndex ATKN F 0 5
+	FrameIndex ATKN G 0 6
+	FrameIndex ATKN H 0 7
+	FrameIndex ATKN I 0 8
+	FrameIndex ATKN J 0 9
+	FrameIndex ATKN K 0 10
+	FrameIndex ATKN L 0 11
+	FrameIndex ATKN M 0 12
+	FrameIndex ATKN N 0 13
+	FrameIndex ATKN O 0 14
+	FrameIndex ATKN P 0 15
+	FrameIndex ATKN Q 0 16
+	FrameIndex ATKN R 0 17
+	FrameIndex ATKN S 0 18
+}
+
+Model YutaniKnife_3D
+{
+	Path "Models\Weapons\knife"
+	Model 0 "knife.md3"
+	Skin 0 "knife.png"
+
+	Scale -0.65 0.65 0.65
+	Offset 0.0 -17.0 -7.0
+	
+	NOINTERPOLATION
+
+	//Ready
+	FrameIndex YTKN A 0 0
+
+	//Slash
+	FrameIndex YTKN B 0 1
+	FrameIndex YTKN C 0 2
+	FrameIndex YTKN D 0 3
+	FrameIndex YTKN E 0 4
+	FrameIndex YTKN F 0 5
+	FrameIndex YTKN G 0 6
+	FrameIndex YTKN H 0 7
+	FrameIndex YTKN I 0 8
+	FrameIndex YTKN J 0 9
+	FrameIndex YTKN K 0 10
+	FrameIndex YTKN L 0 11
+	FrameIndex YTKN M 0 12
+	FrameIndex YTKN N 0 13
+	FrameIndex YTKN O 0 14
+	FrameIndex YTKN P 0 15
+	FrameIndex YTKN Q 0 16
+	FrameIndex YTKN R 0 17
+	FrameIndex YTKN S 0 18
+}

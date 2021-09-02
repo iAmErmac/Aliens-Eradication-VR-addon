@@ -1,0 +1,161 @@
+
+Model M240Flamethrower_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b.md3"
+	Skin 0 "m260b.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex FLBF A 0 0
+	FrameIndex FLMT A 0 0
+
+	//Fire
+	FrameIndex FLMT B 0 1
+	FrameIndex FLMT C 0 2
+	FrameIndex FLMT D 0 3
+
+	//Reloading - drop canister
+	FrameIndex FLMT E 0 5
+	FrameIndex FLMT F 0 6
+	FrameIndex FLMT G 0 7
+	FrameIndex FLMT H 0 8
+	FrameIndex FLMT I 0 9
+
+	//Reloading - add new canister
+	FrameIndex FLMT L 0 11
+	FrameIndex FLMT M 0 12
+	FrameIndex FLMT N 0 13
+	FrameIndex FLMT O 0 14
+	FrameIndex FLMT P 0 15
+	FrameIndex FLMT Q 0 16
+	FrameIndex FLMT R 0 17
+	FrameIndex FLMT S 0 18
+	FrameIndex FLMT T 0 19
+}
+
+//Without canister
+Model M240Flamethrower_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b.md3"
+	SurfaceSkin 0 0 "m260b.png"
+	SurfaceSkin 0 1 "empty.png"
+	SurfaceSkin 0 2 "m260b.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex FLMT J 0 10
+	FrameIndex FLMT K 0 11
+}
+
+//Pickup model
+Model M240Flamethrower_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b_pickup.md3"
+	Skin 0 "m260b.png"
+
+	Scale 2.5 2.5 2.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex WFLM P 0 0
+}
+
+
+
+Model YutaniFlamer_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b.md3"
+	Skin 0 "m260b.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex YLAM A 0 0
+	FrameIndex YLAM E 0 0
+
+	//Fire
+	FrameIndex YLAM F 0 1
+	FrameIndex YLAM G 0 2
+	FrameIndex YLAM H 0 3
+
+	//Reloading - drop canister
+	FrameIndex FLMT E 0 5
+	FrameIndex FLMT F 0 6
+	FrameIndex FLMT G 0 7
+	FrameIndex FLMT H 0 8
+	FrameIndex FLMT I 0 9
+
+	//Reloading - add new canister
+	FrameIndex FLMT L 0 11
+	FrameIndex FLMT M 0 12
+	FrameIndex FLMT N 0 13
+	FrameIndex FLMT O 0 14
+	FrameIndex FLMT P 0 15
+	FrameIndex FLMT Q 0 16
+	FrameIndex FLMT R 0 17
+	FrameIndex FLMT S 0 18
+	FrameIndex FLMT T 0 19
+}
+
+//Without canister
+Model YutaniFlamer_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b.md3"
+	SurfaceSkin 0 0 "m260b.png"
+	SurfaceSkin 0 1 "empty.png"
+	SurfaceSkin 0 2 "m260b.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex FLMT J 0 10
+	FrameIndex FLMT K 0 11
+}
+
+//Pickup model
+Model YutaniFlamer_3D
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b_pickup.md3"
+	Skin 0 "m260b.png"
+
+	Scale 2.5 2.5 2.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex WFLM P 0 0
+}
+
+//Pickup model
+Model NewFlamerspawner
+{
+	Path "Models\Weapons\flamer"
+	Model 0 "m260b_pickup.md3"
+	Skin 0 "m260b.png"
+
+	Scale 2.5 2.5 2.5
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex WFLM P 0 0
+}

@@ -1,0 +1,44 @@
+class weather_math
+{
+    static vector3 point_line_intersection(vector3 point, vector3 line_1, vector3 line_2)
+    {
+        vector3 vec_off = line_2 - line_1;
+        double off_len = vec_off dot vec_off;
+		
+		if(off_len == 0) off_len = 1.0;
+		
+        double t = max(0, min(1, ( ( (point - line_1) dot vec_off) ) / off_len) );
+        vector3 proj = line_1 + t * vec_off;
+ 
+        return proj;
+    }
+
+    static double point_line_distance(vector3 point, vector3 line_1, vector3 line_2, bool squared = false)
+    {
+        vector3 projection = point_line_intersection(point, line_1, line_2);
+        vector3 offset = point - projection;
+        if(squared)
+            return offset dot offset;
+
+        return (point - projection).length();
+    }
+
+    //return true if point v3 located on the same line between points v1 and v2
+    static bool is_between_points(vector3 v1, vector3 v2, vector3 v3)
+    {
+        vector3 vec_1 = v1 - v3;
+        vector3 vec_2 = v2 - v3;
+        if(vec_1 cross vec_2 == (0, 0, 0) )//equal to zero if vectors complanar
+        {
+            //a^2 + b^2 =/= (a+b)^2
+            return (vector_abs(vec_1) + vector_abs(vec_2) == vector_abs(v1 - v2) );
+        }
+
+        return false;
+    }
+
+    static vector3 vector_abs(vector3 v)
+    {
+        return (abs(v.x), abs(v.y), abs(v.z) );
+    }
+}

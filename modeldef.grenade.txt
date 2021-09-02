@@ -1,0 +1,143 @@
+
+Model Satcheler_3D
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale -1.7 1.7 1.7
+	Offset 0.0 -30.0 -7.0
+
+	//Ready
+	FrameIndex STCF A 0 0
+	FrameIndex STCF B 0 0
+	FrameIndex STCG A 0 0
+
+	//Ready
+	FrameIndex STCG B 0 1
+	FrameIndex STCG C 0 2
+	FrameIndex STCG D 0 3
+	FrameIndex STCG E 0 4
+}
+
+//Pickup model
+Model Satcheler_3D
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale 9.0 9.0 9.0
+	Offset 0.0 0.0 80.0
+	
+	ROTATING
+	ROTATION-SPEED 0.2
+
+	//Ready
+	FrameIndex STCP P 0 0
+}
+
+Model Satcheler_3D
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale -1.7 1.7 1.7
+	Offset 0.0 -30.0 -7.0
+
+	//Ready
+	FrameIndex STCF A 0 0
+}
+
+Model YutaniSatchel_3D
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale -1.7 1.7 1.7
+	Offset 0.0 -30.0 -7.0
+
+	//Ready
+	FrameIndex YTCF A 0 0
+	FrameIndex YTCG A 0 0
+
+	//Ready
+	FrameIndex YTCG B 0 1
+	FrameIndex YTCG C 0 2
+	FrameIndex YTCG D 0 3
+	FrameIndex YTCG E 0 4
+}
+
+//Pickup model
+Model YutaniSatchel_3D
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale 9.0 9.0 9.0
+	Offset 0.0 0.0 80.0
+	
+	ROTATING
+	ROTATION-SPEED 0.2
+
+	//Ready
+	FrameIndex STCP P 0 0
+}
+
+//Pickup model
+Model NewSatchelspawner
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale 6.0 6.0 6.0
+	Offset 0.0 0.0 40.0
+	
+	ROTATING
+	ROTATION-SPEED 0.2
+
+	//Ready
+	FrameIndex STCG P 0 0
+}
+
+//Pickup model
+Model NewSatchelAmmo
+{
+	Path "Models\Weapons\grenade"
+	Model 0 "satchel_charge.md3"
+	SurfaceSkin 0 0 "satchel_cover.png"
+	SurfaceSkin 0 1 "satchel_pocket.png"
+	SurfaceSkin 0 2 "satchel.png"
+	SurfaceSkin 0 3 "satchel_charge.png"
+
+	Scale 1.0 1.0 1.0
+	Offset 0.0 0.0 7.0
+	
+	ROTATING
+	ROTATION-SPEED 0.2
+
+	//Ready
+	FrameIndex STCP P 0 0
+}

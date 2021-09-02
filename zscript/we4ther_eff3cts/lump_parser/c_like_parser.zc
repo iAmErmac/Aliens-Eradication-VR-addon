@@ -1,0 +1,76 @@
+//wrapper for gzdoom native readlump function
+//supossed to parse lumps with C-like syntax
+//note, it only read file and return bunch of strings, that all
+class c_like_parser
+{
+//store content of parsed lump here
+private string parsed_lump;
+//does not have defaults, because "Out parameters cannot have default values"
+void read_lump(string lump_name, in out array<string> substrings)
+{
+    //check for lump specific name...
+    int lump_number = wads.FindLump(lump_name);
+    if(lump_number > 0)
+    {
+        ///...and read it if it exist
+        parsed_lump = wads.ReadLump(lump_number);
+        //...and if reading sucssesfull
+        if(parsed_lump)
+        {
+            //TuRn CoNtEnT oF A FiLe tO lower case text
+            parsed_lump = parsed_lump.MakeLower();
+            //position which parser reach
+            uint last_position = -1;
+
+            //okay, parser parsed something
+            //now gets rid if single line comments...
+            while(parsed_lump.IndexOf("//") != -1)
+            {
+                int start = parsed_lump.IndexOf("//");
+                int end   = parsed_lump.IndexOf("\n",start)+1;
+                parsed_lump.Remove(start,end-start);
+            }
+            //...multi lined comment...
+            while(parsed_lump.IndexOf("/*") != -1)
+            {
+                int start = parsed_lump.IndexOf("/*");
+                int end   = parsed_lump.IndexOf("*/",start)+2;
+                parsed_lump.Remove(start,end-start);
+            }
+            //...adding some space near specific symbols (cases like "a=3;b=4")...
+            parsed_lump.Replace("{", " { ");
+            parsed_lump.Replace("}", " } ");
+            parsed_lump.Replace("(", " ( ");
+            parsed_lump.Replace(")", " ) ");
+
+            parsed_lump.Replace(";", " ; ");
+            parsed_lump.Replace(",", " , ");
+            parsed_lump.Replace("|", " | ");
+            
+            parsed_lump.Replace("=", " = ");
+            parsed_lump.Replace("-", " - ");
+            parsed_lump.Replace("*", " * ");
+            parsed_lump.Replace("/", " / ");
+            //..."enter" sign...
+            parsed_lump.Replace("\n", " ");
+            //...carriage retur sign (why its even a thing here?)...
+            parsed_lump.Replace("\r", " ");
+            //...veeeeery long space....
+            while(parsed_lump.IndexOf("  ") != -1)
+            {
+                int start = parsed_lump.IndexOf("  ");
+                parsed_lump.Remove(start, 1);
+            }
+            //...and only now split parsed line on substrings on leftovewr spaces
+            parsed_lump.split(substrings, " ");
+/*
+            for(uint i = 0; i < substrings.size(); i++)
+            {
+                console.printf("%s", substrings[i]);
+            }
+*/
+        }
+    }
+}
+
+}

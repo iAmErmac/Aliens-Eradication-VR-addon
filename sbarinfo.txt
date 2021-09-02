@@ -1,0 +1,272 @@
+//By Lex Some Edits by Kontra Kommando.
+
+height 32;
+completeborder true;
+//DrawKeyBar <size>, {vertical|horizontal}, [flags, ..., ] <icon-size>, <x>, <y> [, <keyoffset> [, <rowsize>, <rowicon-size>]]
+statusbar fullscreen, forcescaled
+{
+DrawKeyBar 6, vertical, auto, 298, 35, 0, 3, 8;
+//drawbar "TBAR04", "TBAR03", Ammo1, horizontal, interpolate(2), 100, 188;
+//drawimage "TBAR01", 100, 188;
+drawbar "TBAR06", "TBAR05", Health, horizontal, interpolate(2), 222, 7;
+drawimage "TBAR02", 222, 7;
+drawnumber 3, Smallfont, green, Health/*, whennotzero*/, 256, 10, 0, red, 0;
+drawimage "TBAR24", 219, 182;
+drawimage "TBAR22", 240, 182;
+drawnumber 3, Smallfont, darkgray, ammo2/*, whennotzero*/, 310, 183;
+drawnumber 3, Smallfont, darkgray, ammo1/*, whennotzero*/, 283, 183;
+drawimage "TBAR07", 219, 25;
+drawimage "TBAR09", 238, 25;
+drawnumber 3, Smallfont, darkgray, armor/*, whennotzero*/, 307, 26;
+drawimage "TBAR07", -14, 5;
+drawimage "TBAR21", 9, 5;
+drawnumber 1, Smallfont, darkgray, AutoTurret/*, whennotzero*/, 70, 6;
+drawimage "TBAR07", -14, 15;
+drawimage "TBAR31", 9, 15;
+drawnumber 2, Smallfont, darkgray, SatchelAmmo/*, whennotzero*/, 70, 16;
+drawimage "TBAR07", 219, 191;
+drawimage "TBAR10", 241, 191;
+drawnumber 2, Smallfont, darkgray, GrenadeAmmo/*, whennotzero*/, 298, 192;
+drawimage "TBAR07", -14, 25;
+drawimage "TBAR23", 11, 25;
+drawnumber 2, Smallfont, darkgray, Flare/*, whennotzero*/, 70, 26;
+
+	IfWaterLevel 3
+	{
+	drawnumber 2, SMALLFONT, CYAN, Airtime, fillzeros, 168, 182;
+	}
+	
+IsSelected Smartgun_3D
+	InInventory SmartAlt, 1
+	{
+	drawstring smallfont, green, "MANUAL-AIM", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected Smartgun_3D
+	//drawimage "SMTGH0", 0, 16;
+	drawstring smallfont, green, "AUTO-AIM", 160, 0, 2, alignment(center);
+	}
+	
+IsSelected YutaniSmartgun_3D
+	InInventory SmartAlt, 1
+	{
+	drawstring smallfont, green, "MANUAL-AIM", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected YutaniSmartgun_3D
+	//drawimage "SMTGH0", 0, 16;
+	drawstring smallfont, green, "AUTO-AIM", 160, 0, 2, alignment(center);
+	}
+	
+IsSelected SynthPistol_3D
+	InInventory PistolRapidAlt, 1
+	{
+	drawstring smallfont, green, "SEMI-AUTO", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected SynthPistol_3D
+	drawstring smallfont, green, "FULL-AUTO", 160, 0, 2, alignment(center);
+	}
+	
+IsSelected YutaniPistol_3D
+	InInventory PistolRapidAlt, 1
+	{
+	drawstring smallfont, green, "SEMI-AUTO", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected YutaniPistol_3D
+	drawstring smallfont, green, "FULL-AUTO", 160, 0, 2, alignment(center);
+	}	
+	
+IsSelected NewShotgun_3D
+	InInventory ShotgunBurstAlt, 1
+	{
+	drawstring smallfont, green, "BURST-SHOT", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected NewShotgun_3D
+	drawstring smallfont, green, "SINGLE-SHOT", 160, 0, 2, alignment(center);
+	}
+	
+IsSelected YutaniShotgun_3D
+	InInventory ShotgunBurstAlt, 1
+	{
+	drawstring smallfont, green, "BURST-SHOT", 160, 0, 2, alignment(center);	
+	}
+Else
+    {
+	IsSelected YutaniShotgun_3D
+	drawstring smallfont, green, "SINGLE-SHOT", 160, 0, 2, alignment(center);
+	}
+	
+InInventory SpeedBooster2, 1
+	{
+	drawimage "BON1A0", 10, 128;
+	}
+	
+	
+PlayerClass Colonist
+	{
+	drawimage "COLHUD", 212, 175;
+	}
+PlayerClass Mercenary
+	{
+	drawimage "SOLHUD", 212, 175;
+	}
+PlayerClass Yutani_Operative
+	{
+	drawimage "YUTHUD", 213, 175;
+	drawimage "TBAR07", -14, 35;
+	drawimage "TBAR32", 11, 35;
+	drawnumber 1, Smallfont, darkgray, FDrone, whennotzero, 70, 36;
+	}
+PlayerClass Combat_Synthetic
+	{
+	drawimage "SYNHUD", 213, 175;
+	}
+	
+
+
+InInventory NoInfraVision, 1
+	{
+	drawimage "NOVIS0", 298, 46;
+	}
+InInventory NoInfraVision, 2
+	{
+	drawimage "NOVIS1", 298, 46;
+	}
+InInventory NoInfraVision, 3
+	{
+	drawimage "NOVIS2", 298, 46;
+	}
+InInventory NoInfraVision, 4
+	{
+	drawimage "NOVIS3", 298, 46;
+	}
+InInventory NoInfraVision, 5
+	{
+	drawimage "NOVIS4", 298, 46;
+	}
+InInventory NoInfraVision, 6
+	{
+	drawimage "NOVIS5", 298, 46;
+	}
+InInventory NoInfraVision, 7
+	{
+	drawimage "NOVIS6", 298, 46;
+	}
+InInventory NoInfraVision, 8
+	{
+	drawimage "NOVIS7", 298, 46;
+	}
+InInventory NoInfraVision, 9
+	{
+	drawimage "NOVIS8", 298, 46;
+	}
+InInventory NoInfraVision, 10
+	{
+	drawimage "NOVIS9", 298, 46;
+	}
+InInventory NoInfraVision, 11
+	{
+	drawimage "NOVIS10", 298, 46;
+	}
+	
+InInventory InfraVisionCharge, 1
+	{
+	drawimage "AVISOR1", 298, 46;
+	}
+InInventory InfraVisionCharge, 2
+	{
+	drawimage "AVISOR2", 298, 46;
+	}
+InInventory InfraVisionCharge, 3
+	{
+	drawimage "AVISOR3", 298, 46;
+	}
+InInventory InfraVisionCharge, 4
+	{
+	drawimage "AVISOR4", 298, 46;
+	}
+InInventory InfraVisionCharge, 5
+	{
+	drawimage "AVISOR5", 298, 46;
+	}
+InInventory InfraVisionCharge, 6
+	{
+	drawimage "AVISOR6", 298, 46;
+	}
+InInventory InfraVisionCharge, 7
+	{
+	drawimage "AVISOR7", 298, 46;
+	}
+InInventory InfraVisionCharge, 8
+	{
+	drawimage "AVISOR8", 298, 46;
+	}
+InInventory InfraVisionCharge, 9
+	{
+	drawimage "AVISOR9", 298, 46;
+	}
+InInventory InfraVisionCharge, 10
+	{
+	drawimage "AVISOR10", 298, 46;
+	}
+	
+}
+
+//"NADEZ0"
+
+statusbar normal // Standard Doom Status bar
+{
+	drawimage "STBAR", 0, 168;
+	drawimage "STTPRCNT", 90, 174;
+	drawimage "STTPRCNT", 221, 174;
+	drawnumber 3, HUDFONT_DOOM, untranslated, ammo1, 34, 174;
+	drawnumber 3, HUDFONT_DOOM, untranslated, health, 88, 174;
+	drawnumber 3, HUDFONT_DOOM, untranslated, armor, 219, 174;
+
+	//keys
+	drawswitchableimage keyslot 2 && 5, "nullimage", "STKEYS0", "STKEYS3", "STKEYS6", 239, 171;
+	drawswitchableimage keyslot 3 && 6, "nullimage", "STKEYS1", "STKEYS4", "STKEYS7", 239, 181;
+	drawswitchableimage keyslot 1 && 4, "nullimage", "STKEYS2", "STKEYS5", "STKEYS8", 239, 191;
+
+	drawnumber 3, INDEXFONT, gold, ammo PulseRifleClip, 288, 173;
+	drawnumber 3, INDEXFONT, gold, ammo Smartgunbullets, 288, 179;
+	drawnumber 3, INDEXFONT, gold, ammo AliensShell, 288, 185;
+	drawnumber 3, INDEXFONT, gold, ammo Gas, 288, 191;
+
+	drawnumber 3, INDEXFONT, gold, ammocapacity PulseRifleClip, 314, 173;
+	drawnumber 3, INDEXFONT, gold, ammocapacity Smartgunbullets, 314, 179;
+	drawnumber 3, INDEXFONT, gold, ammocapacity AliensShell, 314, 185;
+	drawnumber 3, INDEXFONT, gold, ammocapacity Gas, 314, 191;
+	gamemode deathmatch, teamgame
+	{
+		drawnumber 2, HUDFONT_DOOM, untranslated, frags, 138, 171;
+	}
+	gamemode cooperative, singleplayer
+	{
+		drawimage "STARMS", 104, 168;
+		drawswitchableimage weaponslot 2, "STGNUM2", "STYSNUM2", 111, 172;
+		drawswitchableimage weaponslot 3, "STGNUM3", "STYSNUM3", 123, 172;
+		drawswitchableimage weaponslot 4, "STGNUM4", "STYSNUM4", 135, 172;
+		drawswitchableimage weaponslot 5, "STGNUM5", "STYSNUM5", 111, 182;
+		drawswitchableimage weaponslot 6, "STGNUM6", "STYSNUM6", 123, 182;
+		drawswitchableimage weaponslot 7, "STGNUM7", "STYSNUM7", 135, 182;
+	}
+	gamemode cooperative, deathmatch, teamgame
+	{
+		drawimage translatable "STFBANY", 143, 300;
+	}
+	drawselectedinventory alternateonempty, INDEXFONT, 160, 196
+	{
+		drawmugshot 5, 143, 168;
+	}
+	
+}
+

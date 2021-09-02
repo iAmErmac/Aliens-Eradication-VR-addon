@@ -1,0 +1,1553 @@
+#library "SOURCE"
+#include "zcommon.acs"
+
+bool MTRACK = TRUE;
+bool RAIN = TRUE;
+
+
+int fgs;
+
+script 800 ENTER
+{
+  
+      switch(PlayerClass(PlayerNumber()))
+      {
+            case 0:
+			
+			int i;
+
+   Thing_ChangeTID(0, 900 + playernumber() );
+   
+   
+   SetHudSize(387, 242, 1);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+   
+    while (1)
+   {
+      for (i = 0; i < fgs; i++) drawdot(1000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot2(30000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot6(40000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot9(50000 + i, 0);
+      for (i = 0; i < 16; i++)
+         if (i != playernumber()) drawdot(900 + i, 1);
+      Delay(1);
+   }
+				 
+                 break;
+            case 1:
+			
+
+   Thing_ChangeTID(0, 900 + playernumber() );
+   
+   
+   SetHudSize(387, 242, 1);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+
+    while (1)
+   {
+      for (i = 0; i < fgs; i++) drawdot(1000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot2(30000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot6(40000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot9(50000 + i, 0);
+      for (i = 0; i < 16; i++)
+         if (i != playernumber()) drawdot(900 + i, 1);
+      Delay(1);
+   }
+				 
+                 break;
+            case 2:
+			
+
+   Thing_ChangeTID(0, 900 + playernumber() );
+   
+   
+   SetHudSize(387, 242, 1);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+
+    while (1)
+   {
+      for (i = 0; i < fgs; i++) drawdot(1000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot2(30000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot6(40000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot9(50000 + i, 0);
+      for (i = 0; i < 16; i++)
+         if (i != playernumber()) drawdot(900 + i, 1);
+      Delay(1);
+   }
+	 
+                 break;
+			case 3:
+			
+
+   Thing_ChangeTID(0, 900 + playernumber() );
+   
+   
+   SetHudSize(387, 242, 1);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+
+    while (1)
+   {
+      for (i = 0; i < fgs; i++) drawdot(1000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot2(30000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot6(40000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot9(50000 + i, 0);
+      for (i = 0; i < 16; i++)
+         if (i != playernumber()) drawdot(900 + i, 1);
+      Delay(1);
+   }
+				 
+                 break;
+            case -1:
+                 //monster activated the script but we do not care about that
+            default:
+                 //something happened but we are just gonna break
+                 break;
+        }
+}
+
+
+script 783 ENTER
+{
+	ACS_NamedExecute ("OUTSIDE2", 0);
+switch(PlayerClass(PlayerNumber()))
+      {
+            case 0:
+			
+		GiveInventory("SpeedBooster2", 1);
+		DELAY(70);
+		ACS_Execute(806,0,0,0,0);
+		
+                 break;
+            case 1:
+			
+		GiveInventory("SpeedBooster2", 1);
+		DELAY(70);
+		ACS_Execute(806,0,0,0,0);
+
+                 break;
+            case 2:
+					
+		GiveInventory ("FDrone", 3);
+		GiveInventory("SpeedBooster2", 1);
+		DELAY(70);
+		ACS_Execute(806,0,0,0,0);
+					
+                 break;
+			case 3:
+			
+		GiveInventory("SpeedBooster2", 1);
+		DELAY(70);
+		ACS_Execute(806,0,0,0,0);
+				 
+                 break;
+            case -1:
+                 //monster activated the script but we do not care about that
+            default:
+                 //something happened but we are just gonna break
+                 break;
+        }
+}
+
+script 807 (VOID)
+{
+
+	
+	
+	
+   int i;
+
+   Thing_ChangeTID(0, 900 + playernumber() );
+   
+   
+   SetHudSize(387, 242, 1);
+   
+   SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+
+    while (1)
+   {
+      for (i = 0; i < fgs; i++) drawdot(1000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot2(30000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot6(40000 + i, 0);
+	  for (i = 0; i < fgs; i++) drawdot9(50000 + i, 0);
+      for (i = 0; i < 16; i++)
+         if (i != playernumber()) drawdot(900 + i, 1);
+      Delay(1);
+	  ;
+   }
+}
+
+
+SCRIPT 808 (VOID)
+{
+   TAKEINVENTORY("detector",1);
+   SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0);
+   SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, 0, 0, 0);
+
+  }
+
+script 801 RESPAWN
+{
+   Thing_ChangeTID(0, 900+playernumber());
+
+}
+
+
+// to be called in each XENOMORPH spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 802 (int type)
+{
+   Thing_ChangeTID(0, 1000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+			
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+         
+         
+      }
+	  
+   }
+}
+
+
+// to be called in each FRIENDLY COLONIST spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 774 (int type)
+{
+   Thing_ChangeTID(0, 30000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot2(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots  
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each HIGH TIER spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 775 (int type)
+{
+   Thing_ChangeTID(0, 15000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot3(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each MERCENARY spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 776 (int type)
+{
+   Thing_ChangeTID(0, 20000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot4(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each YUTANI OPERATIVE/DRONE spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 777 (int type)
+{
+   Thing_ChangeTID(0, 25000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot5(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each FACEHUGGER spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 778 (int type)
+{
+   Thing_ChangeTID(0, 40000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot6(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+			
+		 
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+			
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(805, 0, 0, 0, 0);
+          
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+			
+		 
+                
+   } 
+   }
+}
+
+
+// to be called in each COLONIST spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 779 (int type)
+{
+   Thing_ChangeTID(0, 35000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot7(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each CRAZED COLONIST spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 780 (int type)
+{
+   Thing_ChangeTID(0, 40000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot8(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+			
+		GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+	   
+	   
+	   
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+// to be called in each FRIENDLY DRONE spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 781 (int type)
+{
+   Thing_ChangeTID(0, 50000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot9(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+		 
+   } 
+   }
+}
+
+
+// to be called in each BOSS spawn state: ACS_ExecuteAlways(802, 0, Radius, Height)
+script 810 (int type)
+{
+   Thing_ChangeTID(0, 50000+fgs++);
+
+
+   // if (GetActorProperty(0, APROP_Damage)) printbold(d:fgs); (for debug purposes only)
+}
+
+function void drawdot10(int tid, int player)
+{
+   int x, y, ang, len;
+
+
+   
+	  
+   if (GetActorProperty (tid, APROP_Health) > 0)
+   {
+      x = GetActorX(0) - GetActorX(tid);
+      y = GetActorY(0) - GetActorY(tid);
+      ang = VectorAngle(x, y);
+
+      if (((ang + 0.128) % 0.5) > 0.25) len = FixedDiv(y,sin(ang));
+      else len = FixedDiv(x, Cos(ang));
+
+      len /= 25; //FOV RADAR
+      
+    
+      if (checkinventory("detector")>0 && len <= 35.0) // RADIO RADAR
+      {
+         ang = GetActorAngle(0) - ang + 0.25; //0 , 0.5 es 2d y 0.25 es fps
+        x = (FixedMul(len, Cos(ang)) + 23.1) >> 16; //POSICION X RADAR
+         y = (FixedMul(len, Sin(ang)) + 218.1) >> 16; // POSICION Y RADAR
+
+
+          
+            SetFont("RCIA"); // high-tier foes are red dots 
+       
+	   GIVEINVENTORY("Beeper",1);
+	   ACS_Execute(804, 0, 0, 0, 0);
+          
+        
+
+         HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 0, -1, x << 16, y << 16, 1873);
+   } 
+   }
+}
+
+
+
+SCRIPT 803 (VOID)
+{
+   SetHudSize(387, 242, 1);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1A0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   GIVEINVENTORY("DETECTOR",1);
+   LOCALAMBIENTSOUND("DET",71);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1B0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);   
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1C0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1D0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1E0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1F0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1G0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1H0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1I0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1J0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(2);
+   SetFont("PDR1K0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 700, -1, -30.1, 175.1, 0, 1.0);
+   SetFont("RDR1A0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_LAYER_UNDERHUD|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 128, -1, -30.1, 175.1, 0, 0.5);
+   DELAY(20);
+   TAKEINVENTORY("DETECTOR",1);
+   DELAY(1);
+   RESTART;
+   }
+   
+
+Script 804 (void)
+{
+	int call = CheckInventory("Beeper");
+	
+	If (Call > 0)
+	{
+	LOCALAMBIENTSOUND("BLIP",18);
+	DELAY(20);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 709, -1, -30.1, 175.1, 1.0);
+	TAKEINVENTORY("DETECTOR",1);
+	
+	}
+}
+
+
+Script 805 (void)
+{
+			int call = CheckInventory("Beeper");
+switch(PlayerClass(PlayerNumber()))
+      {
+            case 0:
+			
+	
+	If (Call > 0)
+	{
+	LOCALAMBIENTSOUND("BLIP",18);
+	SetHudSize(387, 242, 1);
+	SetFont("REDRAD"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0, 1.0);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDHA0"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 708, -1, 42.1, 212.1, 1.0);
+	DELAY(20);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 709, -1, -30.1, 175.1, 1.0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 708, -1, 0.1, 0.1, 1.0);
+	TAKEINVENTORY("DETECTOR",1);
+	
+	}
+				 
+                 break;
+            case 1:
+			
+	
+	If (Call > 0)
+	{
+	LOCALAMBIENTSOUND("BLIP",18);
+	SetHudSize(387, 242, 1);
+	SetFont("REDRAD"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0, 1.0);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDHA0"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP, 708, -1, 42.1, 212.1, 1.0);
+	DELAY(20);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 709, -1, -30.1, 175.1, 1.0);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 708, -1, 0.1, 0.1, 1.0);
+	TAKEINVENTORY("DETECTOR",1);
+	
+	}
+				 
+                 break;
+            case 2:
+			
+	If (Call > 0)
+	{
+	LOCALAMBIENTSOUND("BLIP",18);
+	SetHudSize(387, 242, 1);
+	SetFont("REDRAD"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0, 1.0);
+	DELAY(20);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 709, -1, -30.1, 175.1, 1.0);
+	TAKEINVENTORY("DETECTOR",1);
+					
+	 }
+                 break;
+			case 3:
+			
+	If (Call > 0)
+	{
+	LOCALAMBIENTSOUND("BLIP",18);
+	SetHudSize(387, 242, 1);
+	SetFont("REDRAD"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 709, -1, -30.1, 175.1, 0, 1.0);
+	DELAY(20);
+	SetHudSize(387, 242, 1);
+	SetFont("HUDCLR"); // the actual rounded radar display
+	HudMessage(c:'A'; HUDMSG_PLAIN, 709, -1, -30.1, 175.1, 1.0);
+	TAKEINVENTORY("DETECTOR",1);
+	
+	}			 
+                 break;
+            case -1:
+                 //monster activated the script but we do not care about that
+            default:
+                 //something happened but we are just gonna break
+                 break;
+        }
+	
+}
+
+
+Script 806 (void)
+{
+
+
+  if(MTRACK)
+  {
+		ACS_SUSPEND (807, 0);
+		ACS_SUSPEND (808, 0);
+	DELAY(1);
+		ACS_Execute(800, 0, 0, 0, 0);
+		ACS_Execute(803, 0, 0, 0, 0);		
+				
+	MTRACK = FALSE;
+  }
+  else
+  {
+		ACS_SUSPEND (800, 0);
+		ACS_SUSPEND (803, 0);
+	DELAY(1);
+		ACS_Execute(807, 0, 0, 0, 0);
+		ACS_Execute(808, 0, 0, 0, 0);
+		
+	MTRACK = TRUE;
+  }
+}
+
+
+script "IsThisSky" (Void)
+{
+    if (CheckActorCeilingTexture(0, "F_SKY1"))
+    {
+        SetResultValue(1);
+    }
+    else
+    {
+         SetResultValue(0);
+    }
+}
+
+
+// Throwing Flare
+
+Script 765 (VOID)
+{
+ If (UseInventory("Flare"))
+ {
+    terminate;
+ }
+Else 
+	{
+	Print(s:"    You don't have any flares");
+	Delay(20);
+	}
+}
+
+Script 782 (VOID)
+{
+ If (UseInventory("FDrone"))
+ {
+    terminate;
+ }
+Else 
+	{
+	Print(s:"    You don't have drones");
+	Delay(20);
+	}
+}
+
+// Placing Turret
+
+Script 766 (VOID)
+{
+ If (UseInventory("AutoTurret"))
+ {
+    terminate;
+ }
+Else 
+	{
+	Print(s:"    You don't have any turrets");
+	Delay(20);
+	}
+}	
+
+Script "SPEED" (VOID)
+{
+    UseInventory("SpeedBooster2");
+	ACS_NamedExecuteAlways("FSTFWRD", 0);
+	DELAY(2100);
+	GiveInventory ("SpeedBooster2", 1);
+	AmbientSound("SALAUN", 100);
+}	
+
+//Iron Sight!
+
+Script 767 (VOID)
+{
+	int invx = CheckInventory("NormalStance");
+	
+  If(invx > 0)
+   {
+   SetResultValue(1);
+		TakeInventory ("NormalStance", 1);
+		GiveInventory ("IsSight", 1);
+	}
+	Else	
+	{
+	SetResultValue(0);
+		TakeInventory ("IsSight", 1);
+		GiveInventory ("NormalStance", 1);
+	}	
+}
+
+//Facehugger player death
+
+Script 768 (VOID)
+{
+DamageThing (0, MOD_UNKNOWN); 
+SetHudSize(440, 260, 1);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 250.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 200.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 150.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(80);
+	AmbientSound("FACEDETH", 80);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(180);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(100);
+	AmbientSound("FACEDETH", 80);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(80);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(180);
+	AmbientSound("FACEDETH", 80);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(100);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(80);
+	AmbientSound("FACEDETH", 80);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(180);
+	SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(100);
+	AmbientSound("FACEDETH", 80);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    
+}
+
+//Suicide
+
+Script 769 (VOID)
+{
+DamageThing (0, MOD_UNKNOWN); 
+SetHudSize(440, 260, 1);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 250.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 200.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 150.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+    DELAY(16);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 150.0, 0, 1.0);
+   DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 200.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 250.0, 0.1, 1.0);
+	   
+   
+}
+
+
+script 770 (VOID)
+{
+  
+    SetHudSize(720,600,1);
+	SetFont("TUREFIRE");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 995, 0, 282.2, 627.2, 0.5, 0.9);
+	SetHudSize(720,600,1);
+	SetFont("TUREA2A8");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA | HUDMSG_LAYER_UNDERHUD, 994, 0, 282.2, 627.2, 0.5, 0.9);
+	
+}
+
+
+
+script 772 (void)
+{
+
+DamageThing (0, MOD_UNKNOWN); 
+   SetHudSize(440, 260, 1);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 250.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 200.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 150.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+ 	DELAY(4);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 2.0, 1.0);
+	DELAY(4);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+	DELAY(8);
+	AmbientSound("FACEDETH", 100);
+   SetFont("HUGGY0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 100.0, 0, 1.0);
+   DELAY(4);
+   SetFont("HUGGX0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 150.0, 0, 1.0);
+   DELAY(4);
+   SetFont("HUGGW0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 200.0, 0, 1.0);
+	DELAY(4);
+   SetFont("HUGGV0"); // the actual rounded radar display
+   HudMessage(c:'A'; HUDMSG_PLAIN | HUDMSG_ALPHA, 500, -1, 220.0, 250.0, 0.1, 1.0);
+    
+}
+
+
+script 773 (VOID)
+{
+  
+    SetHudSize(720,600,1);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	SetFont("TUREMPTY");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 282.2, 580.2, 1.0, 0.9);
+	DELAY(40);
+	
+	
+}
+
+script "FSTFWRD" (VOID)
+{
+  
+	SetHudSize(387, 242, 1);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDC");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDD");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDA");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	SetFont("FSTFWRDB");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN | HUDMSG_ALPHA, 996, 0, 44.2, 219.2, 1.0, 0.9);
+	DELAY(35);
+	
+	
+}
+
+
+script 784 (VOID)
+{
+switch(PlayerClass(PlayerNumber()))
+      {
+            case 0:
+			
+			SetHudSize(4000,3600,1);
+ SetFont("HUDHA0"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, 0.1, 100.1, 0, 1.0);
+				 
+                 break;
+            case 1:
+			
+			SetHudSize(4000,3600,1);
+ SetFont("HUDHA0"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, 0.1, 100.1, 0, 1.0);
+				 
+                 break;
+            case 2:
+					
+	 
+                 break;
+			case 3:
+				 
+                 break;
+            case -1:
+                 //monster activated the script but we do not care about that
+            default:
+                 //something happened but we are just gonna break
+                 break;
+        }
+     
+   
+}
+
+
+script 785 (VOID)
+{
+switch(PlayerClass(PlayerNumber()))
+      {
+            case 0:
+			
+			SetHudSize(4000,3600,1);
+  SetFont("-"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, 0.1, 100.1, 0, 1.0);
+				 
+                 break;
+            case 1:
+			
+			SetHudSize(4000,3600,1);
+  SetFont("-"); // the actual rounded radar display
+			HudMessage(c:'A'; HUDMSG_PLAIN|HUDMSG_NOTWITHFULLMAP|HUDMSG_NOTWITHOVERLAYMAP|HUDMSG_ALPHA, 708, -1, 0.1, 100.1, 0, 1.0);
+				 
+                 break;
+            case 2:
+					
+	 
+                 break;
+			case 3:
+				 
+                 break;
+            case -1:
+                 //monster activated the script but we do not care about that
+            default:
+                 //something happened but we are just gonna break
+                 break;
+        }
+     
+   
+}
+
+
+script "OUTSIDE" (void)
+{	
+
+	ACS_NamedExecute ("OUTSIDE2", 0);
+
+}
+
+
+script "OUTSIDE2" (void)
+{	
+	if (CheckActorCeilingTexture(0, "F_SKY1"))
+	{
+		//ACS_NamedExecute ("RAIN", 0);
+		//AmbientSound("AMBRAIN", 50);
+		SetCVar("CWE_thunder_activate", 1);
+	}
+	else
+	{
+		SetCVar("CWE_thunder_activate", 0);
+		//ACS_NamedTerminate ("RAIN", 0);
+		SetHudSize(1600,1200,1);
+		HudMessageBold(s:""; HUDMSG_PLAIN, 925, 0, 0.1, 600.0, 0);
+		StopSound (0, 0);
+	}
+	DELAY(40);
+	RESTART;
+}
+
+
+script "RAIN" (void)
+{
+ 
+	SetHudSize(1600,1200,1);	
+	SetFont("Image2");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -150.1, 600.0, 0, 0.25);
+	DELAY(3);
+	SetFont("");
+	HudMessageBold(s:""; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -150.1, 600.0, 0, 0.25);
+	DELAY(3);
+	SetFont("Image3");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -100.1, 600.0, 0, 0.25);
+	DELAY(3);
+	SetFont("");
+	HudMessageBold(s:""; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -150.1, 600.0, 0, 0.25);
+	DELAY(3);
+	SetFont("Image4");
+	HudMessageBold(s:"a"; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -50.1, 600.0, 0, 0.25);
+	DELAY(3);
+	SetFont("");
+	HudMessageBold(s:""; HUDMSG_PLAIN|HUDMSG_ALPHA, 925, 0, -150.1, 600.0, 0, 0.25);
+	DELAY(3);
+	RESTART;
+	
+}
+
+
+script 811 (void)
+{	
+	if (RAIN)
+	{
+		ACS_NamedTerminate ("OUTSIDE", 0);
+		ACS_NamedTerminate ("OUTSIDE2", 0);
+		//ACS_NamedTerminate ("RAIN", 0);
+		THING_DEACTIVATE (22022);
+		RAIN = FALSE;
+		SetHudSize(1600,1200,1);
+		HudMessageBold(s:""; HUDMSG_PLAIN, 925, 0, 0.1, 600.0, 0);
+		StopSound (0, 0);
+		SetCVar("CWE_weather_type", 0);
+		DELAY(2);
+	}
+	else
+	{
+		THING_ACTIVATE (22022);
+		RAIN = TRUE;
+		SetCVar("CWE_weather_type", 2);
+		DELAY(2);
+	}
+	
+}
+
+script "LOADUP" (void)
+{
+	SetActorProperty (0, APROP_ViewHeight, 61.0);
+}
+
+script "LOADDOWN" (void)
+{
+	SetActorProperty (0, APROP_ViewHeight, 41.0);
+}
+

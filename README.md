@@ -16,8 +16,10 @@ To download the Aliens Eradication VR mod click the download button below:
 * 3D Weapon models
 * Better weather system, heavy raining and thunderstorm in open areas (may impact VR performance)
 * Enhanced bullet tracer and smoke effects on enhanced weapon mode
-* A few performance options to remove some map effects (may help getting more fps)
+* HD SkyBox
+* Optional Infrared Vision (to use when Dynamic Lights are off)
 * Optional abilities to self-heal, dash, double jump, ledge climbing etc.
+* A few performance options to remove some map effects (may help getting more fps)
 * Various fixes to make the mod compatible with both the older and the latest Aliens Eradication mod (HUD fix, ammo capacity fix etc.)
 
 ## Installation
@@ -50,10 +52,12 @@ To optimize gameplay in QZD:
     Make sure heavy raining is turned off in Weather fx settings. You can also bind a controller button
     to toggle rain and then use it to turn off raining completely (which will help increasing fps while outside)
     
-    To get significant frame boost you can disable Dynamic lights completely (flashlight will stop working)
-    You can disable some environment elements from Aliens VR options to have a few more frames
+    To get significant fps boost you can disable dynamic lights completely (flashlight will stop working)
+    With dynamic lights off, turn on Infrared Vision from 'Aliens VR options' to see in the dark
     
-Known issue: Flashlight may not work with the latest Aliens Eradication mod in QuestZDoom. In that case download the older version form QuestZDoom Launcher.
+    You can disable some environment elements from 'Aliens VR options' to have a little fps boost
+    
+Known issue: Flashlight may not work with the latest Aliens Eradication mod in QuestZDoom. In that case download the older version from QuestZDoom Launcher or use the Infrared Vision ability.
 
 ## Wad and mod support:
 
@@ -65,6 +69,7 @@ Aliens Eradication mod (https://www.moddb.com/mods/aliens-eradication-tc) should
 * Sgt Mark IV (Brutal Doom) - for enhanced effect sprites and codes
 * Apeirogon - zscript Simple Weather effects (modified by Ermac)
 * Cherno - for SimSun shader
+* Tim Barton - Space SkyBox image
 
 ## 3D Model credits
 

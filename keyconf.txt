@@ -1,0 +1,20 @@
+clearplayerclasses
+
+addplayerclass ColonistPlayer
+addplayerclass MercenaryPlayer
+addplayerclass YutaniOperativePlayer
+addplayerclass SyntheticPlayer
+
+weaponsection "ColonialMarineArsenal"
+
+setslot 1 Loader_3D AELoader_3D Knife_3D YutaniKnife_3D
+setslot 2 M4A3Pistol_3D MercPistol_3D YutaniPistol_3D SynthPistol_3D
+setslot 3 NewShotgun_3D YutaniShotgun_3D
+setslot 4 PulseRifle_3D YutaniRifle_3D
+setslot 5 M240Flamethrower_3D Yutaniflamer_3D
+setslot 6 Smartgun_3D YutaniSmartgun_3D
+setslot 7 Satcheler_3D YutaniSatchel_3D
+
+AddMenuKey "Adrenaline" speed
+alias speed "pukename SPEED"
+defaultbind U speed

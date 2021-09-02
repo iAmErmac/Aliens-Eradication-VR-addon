@@ -1,0 +1,31 @@
+// Knife
+material texture "models/weapons/knife/knife.png" { shader "shaders/simsun.fp" }
+
+// Pistol
+material texture "models/weapons/pistol/m4a3.png" { shader "shaders/simsun.fp" }
+
+// Shotgun
+material texture "models/weapons/shotgun/m37a2.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/shotgun/shotgun_shell.png" { shader "shaders/simsun.fp" }
+
+// Pulse Rifle
+material texture "models/weapons/rifle/m41a.png" { shader "shaders/simsun.fp" }
+
+// Flamethrower
+material texture "models/weapons/flamer/m260b.png" { shader "shaders/simsun.fp" }
+
+// Smartgun
+material texture "models/weapons/smartgun/m56.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/smartgun/m56_green.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/smartgun/m56_red.png" { shader "shaders/simsun.fp" }
+
+// Satchel charge
+material texture "models/weapons/grenade/satchel.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/grenade/satchel_charge.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/grenade/satchel_cover.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/grenade/satchel_pocket.png" { shader "shaders/simsun.fp" }
+
+// Mech loader
+material texture "models/weapons/mech/loader_grate.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/mech/loader_upper.png" { shader "shaders/simsun.fp" }
+material texture "models/weapons/mech/loader_lower.png" { shader "shaders/simsun.fp" }

@@ -1,0 +1,43 @@
+#include "GLDEFS/ModelShading.txt"
+
+brightmap texture models/weapons/smartgun/smart_mode1.png
+{
+   map models/weapons/smartgun/smart_mode1_bm.png
+}
+
+brightmap texture models/weapons/smartgun/smart_mode2.png
+{
+   map models/weapons/smartgun/smart_mode2_bm.png
+}
+
+brightmap texture models/weapons/mech/loader_lamp.jpg
+{
+   map models/weapons/mech/loader_lamp_bm.png
+}
+
+PointLight LoaderLamp
+{
+Offset 5 75 5
+Color 1.0 0.2 0.2
+Size 60
+}
+
+Object Loader_3D
+{
+Frame CSAWP { Light LoaderLamp }
+}
+
+Object AELoader_3D
+{
+Frame CSAWP { Light LoaderLamp }
+}
+
+Object LBerserk_3D
+{
+Frame CSAWP { Light LoaderLamp }
+}
+
+Object AEBerserk_3D
+{
+Frame CSAWP { Light LoaderLamp }
+}

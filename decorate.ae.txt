@@ -1,0 +1,14 @@
+
+#include "actors/weapons/misc.txt"
+
+#include "actors/weapons/knife.txt"
+#include "actors/weapons/mechloader.txt"
+#include "actors/weapons/pistol.txt"
+#include "actors/weapons/shotgun.txt"
+#include "actors/weapons/rifle.txt"
+#include "actors/weapons/flamethrower.txt"
+#include "actors/weapons/smartgun.txt"
+#include "actors/weapons/grenade.txt"
+
+#include "actors/players.txt"
+#include "actors/items.txt"

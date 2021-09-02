@@ -1,0 +1,145 @@
+
+/*
+*
+* Script credits to Custom Doom and Ultimate Custom Doom mods
+* https://forum.zdoom.org/viewtopic.php?f=43&t=51446
+* https://github.com/mmaulwurff/ultimate-custom-doom
+*
+* Everything is modified and extended by Ermac
+* https://github.com/iAmErmac
+*
+*
+* You may use this in your project. Just leave this comment
+* at the top of this script and give credit please
+*
+*/
+
+class CustomPlayerProperties play
+{
+
+// public: /////////////////////////////////////////////////////////////////////////////////////////
+
+	CustomPlayerProperties init(PlayerInfo player)
+	{
+		_jumpZ = player.mo.jumpZ;
+		return self;
+	}
+
+	void update(PlayerInfo player)
+	{
+		PlayerPawn           pawn    = player.mo;
+		class<PlayerPawn>    type    = pawn.GetClassName();
+		readonly<PlayerPawn> default = GetDefaultByType(type);
+
+		updateDamageMultiply(pawn, default);
+		updateSpeed         (pawn, default);
+		updateJumpZ         (pawn, default);
+	}
+
+// private: ////////////////////////////////////////////////////////////////////////////////////////
+
+	private static void updateDamageMultiply(PlayerPawn pawn, readonly<PlayerPawn> default)
+	{
+		double originalDamageMultiplier = default.DamageMultiply;
+		double _damage_mult = CVar.GetCvar("avw_damage_mult").GetFloat();
+		pawn.DamageMultiply = _damage_mult ? originalDamageMultiplier * _damage_mult : originalDamageMultiplier;
+	}
+
+	private static void updateSpeed(PlayerPawn pawn, readonly<PlayerPawn> default)
+	{
+		double originalSpeed = default.Speed;
+		double _speed_mult = CVar.GetCvar("avw_speed_mult").GetFloat();
+		pawn.Speed = _speed_mult ? originalSpeed * _speed_mult : originalSpeed;
+	}
+
+	private void updateJumpZ(PlayerPawn pawn, readonly<PlayerPawn> default)
+	{
+		double originalJumpZ = default.JumpZ;
+		double _jump_mult = CVar.GetCvar("avw_jump_mult").GetFloat();
+
+		if (pawn.JumpZ != _jumpZ) // something changed the jump height
+		{
+			originalJumpZ = pawn.JumpZ;
+		}
+
+		pawn.JumpZ = _jump_mult ? originalJumpZ * _jump_mult : originalJumpZ;
+		_jumpZ = pawn.JumpZ;
+	}
+
+	private double _jumpZ;
+}
+
+class PlayerPropModifier : EventHandler
+{
+	private CustomPlayerProperties 	_playerProperties;
+	private transient bool 			_isNotLoadedGame;
+	private int healticks;
+
+	override void PlayerEntered(PlayerEvent event)
+	{
+		initEvent(event);
+	}
+	
+	override void WorldTick()
+	{
+		PlayerInfo player = players[consolePlayer];
+		if (player == null) { return; }
+
+		if (isJustLoadedGame()) { init(player); }
+
+		updateProperties(player);
+		
+		if(healticks > 0){
+			healticks--;
+		}
+		else{
+			healticks = CVar.GetCVar("avw_regen_time").GetFloat() * 35;
+			healUp(player);
+		}
+	}
+	
+	private void initEvent(PlayerEvent event)
+	{
+		if (event == null) { return; }
+		if (event.playerNumber != consolePlayer) { return; }
+
+		PlayerInfo player = players[consolePlayer];
+
+		init(player);
+		healticks = CVar.GetCVar("avw_regen_time").GetFloat() * 35;
+	}
+	
+	private void init(PlayerInfo player)
+	{
+		_playerProperties = new("CustomPlayerProperties").init(player);
+		updateProperties(player);
+	}
+	
+	private void updateProperties(PlayerInfo player)
+	{
+		_playerProperties.update(player);
+	}
+	
+	private bool isJustLoadedGame()
+	{
+		bool result = !_isNotLoadedGame;
+		_isNotLoadedGame = true;
+		return result;
+	}
+	
+	private void healUp(PlayerInfo player)
+	{
+		if (!player || player.Health <= 0 || !avw_health_regen) return;
+
+		int health    = player.mo.Health;
+		int maxHealth = player.mo.MaxHealth ? player.mo.MaxHealth : 100;
+		int maxRegen = CVar.GetCVar('avw_critical_heal').GetBool() ? 30 : maxHealth;
+		
+		if(health >= maxRegen){
+			return;
+		}
+		else{
+			player.mo.A_SetHealth(health + 1);
+		}
+	}
+}

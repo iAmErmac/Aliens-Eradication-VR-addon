@@ -1,0 +1,39 @@
+:rain_sequence
+   playrepeat	rain_sound
+   //attenuation normal
+   //attenuation idle
+   //attenuation static
+   attenuation surround
+end
+
+:thunder_ambient_1
+   playuntildone thunder_sound_1
+end
+
+:thunder_ambient_2
+   playuntildone thunder_sound_2
+end
+
+:thunder_ambient_3
+   playuntildone thunder_sound_3
+end
+
+:thunder_ambient_4
+   playuntildone thunder_sound_4
+end
+
+:thunder_ambient_5
+   playuntildone thunder_sound_5
+end
+
+:thunder_ambient_6
+   playuntildone thunder_sound_6
+end
+
+:thunder_ambient_7
+   playuntildone thunder_sound_7
+end
+
+:thunder_ambient_8
+   playuntildone thunder_sound_8
+end

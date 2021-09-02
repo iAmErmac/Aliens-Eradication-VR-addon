@@ -1,0 +1,204 @@
+
+Model NewShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2.md3"
+	Skin 0 "m37a2.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex ATSG A 0 0
+
+	//Fire
+	FrameIndex ATSG B 0 1
+	FrameIndex ATSG C 0 2
+	FrameIndex ATSG D 0 3
+
+	//Pump
+	FrameIndex ATSG E 0 4
+	FrameIndex ATSG F 0 5
+	FrameIndex ATSG G 0 6
+	FrameIndex ATSG H 0 7
+	FrameIndex ATSG I 0 8
+	FrameIndex ATSG J 0 9
+	FrameIndex ATSG K 0 10
+	FrameIndex ATSG L 0 11
+	FrameIndex ATSG M 0 12
+	FrameIndex ATSG N 0 13
+}
+
+//Reloading
+Model NewShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2.md3"
+	SurfaceSkin 0 0 "m37a2.png"
+	SurfaceSkin 0 1 "m37a2.png"
+	SurfaceSkin 0 2 "m37a2.png"
+	SurfaceSkin 0 3 "shotgun_shell.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex ATSR A 0 14
+	FrameIndex ATSR B 0 15
+	FrameIndex ATSR C 0 16
+	FrameIndex ATSR D 0 17
+	FrameIndex ATSR E 0 18
+	FrameIndex ATSR F 0 19
+	FrameIndex ATSR G 0 20
+	FrameIndex ATSR H 0 21
+	FrameIndex ATSR I 0 22
+	FrameIndex ATSR J 0 23
+	FrameIndex ATSR K 0 24
+	FrameIndex ATSR L 0 25
+	FrameIndex ATSR M 0 26
+	FrameIndex ATSR N 0 27
+	FrameIndex ATSR O 0 28
+}
+
+//Muzzle flash
+Model NewShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "shotgun_mf.md3"
+	Skin 0 "shotgun_mf.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex SGMF A 0 1
+	FrameIndex SGMF B 0 2
+}
+
+//Pickup model
+Model NewShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2_pickup.md3"
+	Skin 0 "m37a2.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SHOT P 0 0
+}
+
+
+Model YutaniShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2.md3"
+	Skin 0 "m37a2.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex YTSG A 0 0
+
+	//Fire
+	FrameIndex YTSG B 0 1
+	FrameIndex YTSG C 0 2
+	FrameIndex YTSG D 0 3
+
+	//Pump
+	FrameIndex YTSG E 0 4
+	FrameIndex YTSG F 0 5
+	FrameIndex YTSG G 0 6
+	FrameIndex YTSG H 0 7
+	FrameIndex YTSG I 0 8
+	FrameIndex YTSG J 0 9
+	FrameIndex YTSG K 0 10
+	FrameIndex YTSG L 0 11
+	FrameIndex YTSG M 0 12
+	FrameIndex YTSG N 0 13
+}
+
+//Reloading
+Model YutaniShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2.md3"
+	SurfaceSkin 0 0 "m37a2.png"
+	SurfaceSkin 0 1 "m37a2.png"
+	SurfaceSkin 0 2 "m37a2.png"
+	SurfaceSkin 0 3 "shotgun_shell.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex YTSR A 0 14
+	FrameIndex YTSR B 0 15
+	FrameIndex YTSR C 0 16
+	FrameIndex YTSR D 0 17
+	FrameIndex YTSR E 0 18
+	FrameIndex YTSR F 0 19
+	FrameIndex YTSR G 0 20
+	FrameIndex YTSR H 0 21
+	FrameIndex YTSR I 0 22
+	FrameIndex YTSR J 0 23
+	FrameIndex YTSR K 0 24
+	FrameIndex YTSR L 0 25
+	FrameIndex YTSR M 0 26
+	FrameIndex YTSR N 0 27
+	FrameIndex YTSR O 0 28
+}
+
+//Muzzle flash
+Model YutaniShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "shotgun_mf.md3"
+	Skin 0 "shotgun_mf.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -34.0 -4.0
+
+	//Ready
+	FrameIndex SGMF A 0 1
+	FrameIndex SGMF B 0 2
+}
+
+//Pickup model
+Model YutaniShotgun_3D
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2_pickup.md3"
+	Skin 0 "m37a2.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SHOT P 0 0
+}
+
+//Pickup model
+Model NewShotgunspawner
+{
+	Path "Models\Weapons\shotgun"
+	Model 0 "m37a2_pickup.md3"
+	Skin 0 "m37a2.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex SHOT P 0 0
+}

@@ -1,0 +1,72 @@
+#library "maxammo"
+#include "zcommon.acs"
+
+script "SetMaxBackpackAmmo" (int Amount)
+{
+	If (Amount)
+	{
+		if (GetAmmoCapacity("PulseRifleClip") < 500)
+		{
+			SetAmmoCapacity("PistolClip", 175);
+			//SetAmmoCapacity("YutaniClip", 250);
+			//SetAmmoCapacity("SynthClip", 300);
+			SetAmmoCapacity("PulseRifleClip", 500);
+			SetAmmoCapacity("SatchelAmmo", 20);
+			SetAmmoCapacity("Smartgunbullets", 600);
+			SetAmmoCapacity("Gas", 600);
+			SetAmmoCapacity("AliensShell", 60);
+		}
+		
+		//GiveInventory("Backpackitem", Amount);
+		
+		GiveInventory("PistolClip", 32);
+		GiveInventory("AliensShell", 16);
+		GiveInventory("PulseRifleClip", 95);
+		GiveInventory("Gas", 150);
+		GiveInventory("Smartgunbullets", 150);
+		GiveInventory("SatchelAmmo", 6);
+	}
+}
+
+script "ReAdjustPlayerMaxAmmo" (void)
+{
+	SetAmmoCapacity("PistolClip", 128);
+	//SetAmmoCapacity("YutaniClip", 200);
+	//SetAmmoCapacity("SynthClip", 250);
+}
+
+script "ReAdjustPlayerStartupAmmo" (void)
+{
+	if(CheckInventory("ColonistStartItem"))
+	{
+		TakeInventory("ColonistStartItem",1);
+		TakeInventory("PistolClip", 100);
+		GiveInventory("PistolClip", 48);
+	}
+	if(CheckInventory("MercStartItem"))
+	{
+		TakeInventory("MercStartItem",1);
+		TakeInventory("PistolClip", 100);
+		GiveInventory("PistolClip", 48);
+	}
+	if(CheckInventory("YutaniStartItem"))
+	{
+		TakeInventory("YutaniStartItem",1);
+		TakeInventory("PistolClip", 100);
+		GiveInventory("PistolClip", 48);
+	}
+	if(CheckInventory("SynthStartItem"))
+	{
+		TakeInventory("SynthStartItem",1);
+		TakeInventory("PistolClip", 100);
+		GiveInventory("PistolClip", 48);
+	}
+}
+
+script "PlayerMaxAmmoSetup" ENTER
+{
+	Delay(1);
+	ACS_NamedExecute("ReAdjustPlayerMaxAmmo", 0);
+	Delay(1);
+	ACS_NamedExecute("ReAdjustPlayerStartupAmmo", 0);
+}

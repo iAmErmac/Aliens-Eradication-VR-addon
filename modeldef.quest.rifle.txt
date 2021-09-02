@@ -1,0 +1,282 @@
+
+Model PulseRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	Skin 0 "m41a.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex PULS A 0 0
+
+	//Fire
+	FrameIndex PULS B 0 1
+	FrameIndex PULS C 0 2
+	FrameIndex PULS D 0 3
+
+	//Fire grenade
+	FrameIndex PULS E 0 4
+	FrameIndex PULS F 0 5
+	FrameIndex PULS G 0 6
+	FrameIndex PULS H 0 7
+	FrameIndex PULS I 0 8
+	
+	//Pump
+	FrameIndex PULS J 0 9
+	FrameIndex PULS K 0 10
+	FrameIndex PULS L 0 11
+	FrameIndex PULS M 0 12
+	FrameIndex PULS N 0 13
+}
+
+//Reloading
+Model PulseRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	Skin 0 "m41a.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	FrameIndex PLSR A 0 14
+	FrameIndex PLSR B 0 15
+	
+	//Insert new mag
+	FrameIndex PLSR J 0 22
+	FrameIndex PLSR K 0 23
+	FrameIndex PLSR L 0 24
+	FrameIndex PLSR M 0 25
+	FrameIndex PLSR N 0 26
+	FrameIndex PLSR O 0 27
+	
+	//End reloading
+	FrameIndex PLSR P 0 28
+	FrameIndex PLSR Q 0 29
+	FrameIndex PLSR R 0 30
+	FrameIndex PLSR S 0 31
+	FrameIndex PLSR T 0 32
+	FrameIndex PLSR U 0 33
+	FrameIndex PLSR V 0 34
+	FrameIndex PLSR W 0 35
+}
+
+//Without magazine
+Model PulseRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	SurfaceSkin 0 0 "m41a.png"
+	SurfaceSkin 0 1 "m41a.png"
+	SurfaceSkin 0 2 "m41a.png"
+	SurfaceSkin 0 3 "m41a.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+	
+	NOINTERPOLATION
+	
+	//Drop mag
+	FrameIndex PLSR C 0 16
+	FrameIndex PLSR D 0 17
+	FrameIndex PLSR E 0 18
+	FrameIndex PLSR F 0 19
+	FrameIndex PLSR G 0 20
+	FrameIndex PLSR H 0 21
+	FrameIndex PLSR I 0 22
+}
+
+//Muzzle flash
+Model PulseRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "pulse_mf.md3"
+	Skin 0 "pulse_mf.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//bullets
+	FrameIndex PLMF A 0 1
+	Skin 0 "pulse_mf2.png"
+	FrameIndex PLMF B 0 2
+	Skin 0 "pulse_mf3.png"
+	FrameIndex PLMF C 0 3
+	
+	//grenade
+	Skin 0 "pulse_mf2.png"
+	FrameIndex PLMF D 0 4
+	Skin 0 "pulse_mf3.png"
+	FrameIndex PLMF E 0 5
+}
+
+//Pickup model
+Model PulseRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a_pickup.md3"
+	Skin 0 "m41a.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex PLSP P 0 0
+}
+
+
+
+
+Model YutaniRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	Skin 0 "m41a.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//Ready
+	FrameIndex YULS A 0 0
+
+	//Fire
+	FrameIndex YULS B 0 1
+	FrameIndex YULS C 0 2
+	FrameIndex YULS D 0 3
+
+	//Fire grenade
+	FrameIndex YULS E 0 4
+	FrameIndex YULS F 0 5
+	FrameIndex YULS G 0 6
+	FrameIndex YULS H 0 7
+	FrameIndex YULS I 0 8
+	
+	//Pump
+	FrameIndex YULS J 0 9
+	FrameIndex YULS K 0 10
+	FrameIndex YULS L 0 11
+	FrameIndex YULS M 0 12
+	FrameIndex YULS N 0 13
+}
+
+//Reloading
+Model YutaniRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	Skin 0 "m41a.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	FrameIndex PLSR A 0 14
+	FrameIndex PLSR B 0 15
+	
+	//Insert new mag
+	FrameIndex PLSR J 0 22
+	FrameIndex PLSR K 0 23
+	FrameIndex PLSR L 0 24
+	FrameIndex PLSR M 0 25
+	FrameIndex PLSR N 0 26
+	FrameIndex PLSR O 0 27
+	
+	//End reloading
+	FrameIndex PLSR P 0 28
+	FrameIndex PLSR Q 0 29
+	FrameIndex PLSR R 0 30
+	FrameIndex PLSR S 0 31
+	FrameIndex PLSR T 0 32
+	FrameIndex PLSR U 0 33
+	FrameIndex PLSR V 0 34
+	FrameIndex PLSR W 0 35
+}
+
+//Without magazine
+Model YutaniRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a.md3"
+	SurfaceSkin 0 0 "m41a.png"
+	SurfaceSkin 0 1 "m41a.png"
+	SurfaceSkin 0 2 "m41a.png"
+	SurfaceSkin 0 3 "m41a.png"
+	SurfaceSkin 0 4 "empty.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+	
+	NOINTERPOLATION
+	
+	//Drop mag
+	FrameIndex PLSR C 0 16
+	FrameIndex PLSR D 0 17
+	FrameIndex PLSR E 0 18
+	FrameIndex PLSR F 0 19
+	FrameIndex PLSR G 0 20
+	FrameIndex PLSR H 0 21
+	FrameIndex PLSR I 0 22
+}
+
+//Muzzle flash
+Model YutaniRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "pulse_mf.md3"
+	Skin 0 "pulse_mf.png"
+
+	Scale -1.1 1.1 1.1
+	Offset 0.0 -33.0 -5.0
+
+	//bullets
+	FrameIndex PLMF A 0 1
+	Skin 0 "pulse_mf2.png"
+	FrameIndex PLMF B 0 2
+	Skin 0 "pulse_mf3.png"
+	FrameIndex PLMF C 0 3
+	
+	//grenade
+	Skin 0 "pulse_mf2.png"
+	FrameIndex PLMF D 0 4
+	Skin 0 "pulse_mf3.png"
+	FrameIndex PLMF E 0 5
+}
+
+//Pickup model
+Model YutaniRifle_3D
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a_pickup.md3"
+	Skin 0 "m41a.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex PLSP P 0 0
+}
+
+//Pickup model
+Model NewPulsespawner
+{
+	Path "Models\Weapons\rifle"
+	Model 0 "m41a_pickup.md3"
+	Skin 0 "m41a.png"
+
+	Scale 2.8 2.8 2.8
+	Offset 0.0 0.0 5.0
+	
+	ROTATING
+	rotation-speed 0.2
+
+	//Ready
+	FrameIndex PLSP P 0 0
+}

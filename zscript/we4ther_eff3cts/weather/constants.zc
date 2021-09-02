@@ -1,0 +1,28 @@
+//aproximated size of weather spawner blocks.
+const interval_between_points = 150;
+
+//rain sound slot for sectors
+const rain_sound_slot = 33;
+
+//global enums for weather type
+enum CWE_TYPE
+{
+    CWE_NONE = 0,//0
+    CWE_SNOW = 1,//1
+    CWE_RAIN = 1 << 1,//2
+    CWE_ASH = 1 <<2,//4
+
+    CWE_WTF = 1 <<16//8
+};
+
+enum lighting_sound_type
+{
+    LST_1 = 1,
+    LST_2,
+    LST_3,
+    LST_4,
+    LST_5,
+    LST_6,
+    LST_7,
+    LST_8
+};

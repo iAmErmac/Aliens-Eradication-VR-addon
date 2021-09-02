@@ -1,0 +1,49 @@
+Actor AEBackPack: CustomInventory replaces Backpack
+{
+	-INVENTORY.INVBAR
+	+INVENTORY.AUTOACTIVATE
+	States
+	{
+		Spawn:
+			BPAK A -1
+			Stop
+		Use:
+			TNT1 A 0 
+			BPAK A 0 ACS_NamedExecuteAlways ("SetMaxBackpackAmmo", 0, 1)
+			Stop
+	}
+}
+
+actor HasteSphere2 : PowerupGiver
+{
+	Game Doom
+	inventory.pickupmessage "Speed Boost!!."
+	inventory.maxamount 1
+	powerup.duration -30
+	powerup.color "FF FF 00", 0.1
+	powerup.type Speed
+	+COUNTITEM
+	+INVENTORY.AUTOACTIVATE
+	+INVENTORY.ALWAYSPICKUP
+	States
+	{
+	
+	}
+}
+
+ACTOR SpeedBooster2 : CustomInventory
+{
+	scale 0.70
+	States
+	{
+		Spawn:
+		TNT1 A 0
+		Stop
+		Use:
+			TNT1 A 0 A_GiveInventory("HasteSphere2", 1)
+			TNT1 A 0 A_PlaySound("DSKSSCLS", 6, 80)
+		Stop
+
+
+	}
+}

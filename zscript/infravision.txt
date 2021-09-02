@@ -1,0 +1,269 @@
+
+class EnhancedVision : EventHandler
+{
+	const infravision_capacity = 2100; //3 min
+	int infravision_counter;
+	
+	/*
+	override void PlayerEntered(PlayerEvent event)
+	{
+		infravision_counter = infravision_capacity;
+	}
+	*/
+
+	override void NetworkProcess(ConsoleEvent e)
+    {
+        let plr = players[e.Player].mo;
+		if(!plr) return;
+		
+		//Detect pressing of NightVision key		
+        if (e.Name == "alien_vision" && avw_infra_vision && plr.health > 0)
+        {
+			if(plr.findinventory("PowerEnhancedVision") || plr.findinventory("PowerProtoVision") || plr.findinventory("PowerGoldVision") || plr.findinventory("PowerGreenVision") || plr.findinventory("PowerRedVision"))
+			{
+				plr.setinventory("PowerEnhancedVision", 0);
+				plr.setinventory("PowerProtoVision", 0);
+				plr.setinventory("PowerGoldVision", 0);
+				plr.setinventory("PowerGreenVision", 0);
+				plr.setinventory("PowerRedVision", 0);
+			}
+			else
+			{
+				switch(avw_infra_vision)
+				{
+					case 2: plr.setinventory("PowerProtoVision", 1, false); break;
+					case 3: plr.setinventory("PowerGoldVision", 1, false); break;
+					case 4: plr.setinventory("PowerGreenVision", 1, false); break;
+					case 5: plr.setinventory("PowerRedVision", 1, false); break;
+					default: plr.setinventory("PowerEnhancedVision", 1, false); break;
+				}
+			}
+		}
+	}
+	
+	override void WorldTick()
+	{
+        let plr = players[consolePlayer].mo;
+		if(!plr) return;
+		
+		//If night vision disabled
+		
+		if(!avw_infra_vision)
+		{
+			infravision_counter = 0;
+			plr.setinventory("PowerEnhancedVision", 0);
+			plr.setinventory("PowerProtoVision", 0);
+			plr.setinventory("PowerGoldVision", 0);
+			plr.setinventory("PowerGreenVision", 0);
+			plr.setinventory("PowerRedVision", 0);
+			plr.setinventory("InfraVisionCharge", 0);
+			plr.setinventory("NoInfraVision", 0);
+			return;
+		}
+		
+		//If player died
+		
+		if(plr.health < 0)
+		{
+			infravision_counter = 0;
+			plr.setinventory("PowerEnhancedVision", 0);
+			plr.setinventory("PowerProtoVision", 0);
+			plr.setinventory("PowerGoldVision", 0);
+			plr.setinventory("PowerGreenVision", 0);
+			plr.setinventory("PowerRedVision", 0);
+			plr.setinventory("InfraVisionCharge", 0);
+			plr.setinventory("NoInfraVision", 1);
+			return;
+		}
+		
+		
+		//Infra vision timer
+		
+		if(infravision_counter > 0 && (plr.findinventory("PowerEnhancedVision") || plr.findinventory("PowerProtoVision") || plr.findinventory("PowerGoldVision") || plr.findinventory("PowerGreenVision") || plr.findinventory("PowerRedVision")))
+		{
+			infravision_counter--;
+		}
+		
+		if(infravision_counter <= 0 && (plr.findinventory("PowerEnhancedVision") || plr.findinventory("PowerProtoVision") || plr.findinventory("PowerGoldVision") || plr.findinventory("PowerGreenVision") || plr.findinventory("PowerRedVision")))
+		{
+			plr.setinventory("PowerEnhancedVision", 0);
+			plr.setinventory("PowerProtoVision", 0);
+			plr.setinventory("PowerGoldVision", 0);
+			plr.setinventory("PowerGreenVision", 0);
+			plr.setinventory("PowerRedVision", 0);
+		}
+		
+		if(infravision_counter < infravision_capacity && !plr.findinventory("PowerEnhancedVision") && !plr.findinventory("PowerProtoVision") && !plr.findinventory("PowerGoldVision") && !plr.findinventory("PowerGreenVision") && !plr.findinventory("PowerRedVision"))
+		{
+			infravision_counter++;
+		}
+		
+		
+		
+		//To set hud icon
+		
+		if(infravision_counter > 0 && (plr.findinventory("PowerEnhancedVision") || plr.findinventory("PowerProtoVision") || plr.findinventory("PowerGoldVision") || plr.findinventory("PowerGreenVision") || plr.findinventory("PowerRedVision")))
+		{
+			plr.setinventory("NoInfraVision", 0);
+			
+			if(infravision_counter > (infravision_capacity * 9/10))
+			{
+				plr.setinventory("InfraVisionCharge", 10);
+			}
+			else if(infravision_counter > (infravision_capacity * 8/10))
+			{
+				plr.setinventory("InfraVisionCharge", 9);
+			}
+			else if(infravision_counter > (infravision_capacity * 7/10))
+			{
+				plr.setinventory("InfraVisionCharge", 8);
+			}
+			else if(infravision_counter > (infravision_capacity * 6/10))
+			{
+				plr.setinventory("InfraVisionCharge", 7);
+			}
+			else if(infravision_counter > (infravision_capacity * 5/10))
+			{
+				plr.setinventory("InfraVisionCharge", 6);
+			}
+			else if(infravision_counter > (infravision_capacity * 4/10))
+			{
+				plr.setinventory("InfraVisionCharge", 5);
+			}
+			else if(infravision_counter > (infravision_capacity * 3/10))
+			{
+				plr.setinventory("InfraVisionCharge", 4);
+			}
+			else if(infravision_counter > (infravision_capacity * 2/10))
+			{
+				plr.setinventory("InfraVisionCharge", 3);
+			}
+			else if(infravision_counter > (infravision_capacity * 1/10))
+			{
+				plr.setinventory("InfraVisionCharge", 2);
+			}
+			else
+			{
+				plr.setinventory("InfraVisionCharge", 1);
+			}
+		}
+		else
+		{
+			plr.setinventory("InfraVisionCharge", 0);
+			
+			if(infravision_counter < (infravision_capacity * 1/20))
+			{
+				plr.setinventory("NoInfraVision", 1);
+			}
+			else if(infravision_counter < (infravision_capacity * 1/10))
+			{
+				plr.setinventory("NoInfraVision", 2);
+			}
+			else if(infravision_counter < (infravision_capacity * 2/10))
+			{
+				plr.setinventory("NoInfraVision", 3);
+			}
+			else if(infravision_counter < (infravision_capacity * 3/10))
+			{
+				plr.setinventory("NoInfraVision", 4);
+			}
+			else if(infravision_counter < (infravision_capacity * 4/10))
+			{
+				plr.setinventory("NoInfraVision", 5);
+			}
+			else if(infravision_counter < (infravision_capacity * 5/10))
+			{
+				plr.setinventory("NoInfraVision", 6);
+			}
+			else if(infravision_counter < (infravision_capacity * 6/10))
+			{
+				plr.setinventory("NoInfraVision", 7);
+			}
+			else if(infravision_counter < (infravision_capacity * 7/10))
+			{
+				plr.setinventory("NoInfraVision", 8);
+			}
+			else if(infravision_counter < (infravision_capacity * 8/10))
+			{
+				plr.setinventory("NoInfraVision", 9);
+			}
+			else if(infravision_counter <  (infravision_capacity * 9/10))
+			{
+				plr.setinventory("NoInfraVision", 10);
+			}
+			else
+			{
+				plr.setinventory("NoInfraVision", 11);
+			}
+		}
+	}
+}
+
+Class NoInfraVision : Inventory
+{
+	Default
+	{
+	Inventory.maxamount 11;
+	}
+}
+
+Class InfraVisionCharge : Inventory
+{
+	Default
+	{
+	Inventory.maxamount 11;
+	}
+}
+
+Class PowerNightVision : PowerLightAmp
+{
+	Default
+	{
+	Powerup.Duration 0x7FFFFFFD;
+	}
+}
+
+// Night Vision
+Class PowerEnhancedVision : PowerNightVision
+{
+	Default
+	{
+	Powerup.ColorMap 0, 1, 0;
+	}
+}
+
+// Night Vision Prototype
+Class PowerProtoVision : PowerNightVision
+{
+	Default
+	{
+	Powerup.ColorMap 0, 1, 1;
+	}
+}
+
+// Night Vision (GoldMap)
+Class PowerGoldVision : PowerNightVision
+{
+	Default
+	{
+	Powerup.Color "GoldMap";
+	}
+}
+
+// Night Vision (GreenMap)
+Class PowerGreenVision : PowerNightVision
+{
+	Default
+	{
+	Powerup.Color "GreenMap";
+	}
+}
+
+// Night Vision (RedMap)
+Class PowerRedVision : PowerNightVision
+{
+	Default
+	{
+	Powerup.Color "RedMap";
+	}
+}

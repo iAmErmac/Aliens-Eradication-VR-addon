@@ -1,0 +1,206 @@
+
+Model Loader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "mechloader.md3"
+	SurfaceSkin 0 0 "loader_grate.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_upper.png"
+
+	Scale -1.0 1.0 1.0
+	Offset -10.0 40.0 -10.0
+
+	//Ready
+	FrameIndex SAWG A 0 0
+
+	//Attack
+	FrameIndex SAWG B 0 1
+	FrameIndex SAWG C 0 2
+	FrameIndex SAWG D 0 3
+	FrameIndex SAWG E 0 4
+	FrameIndex SAWG F 0 5
+	FrameIndex SAWG G 0 6
+	FrameIndex SAWG H 0 7
+	FrameIndex SAWG I 0 8
+	FrameIndex SAWG J 0 9
+	FrameIndex SAWG K 0 10
+	FrameIndex SAWG L 0 11
+	FrameIndex SAWG M 0 12
+	FrameIndex SAWG N 0 13
+	FrameIndex SAWG O 0 14
+	
+	//Alt fire
+	FrameIndex SAWG P 0 15
+	FrameIndex SAWG Q 0 16
+	FrameIndex SAWG R 0 17
+	FrameIndex SAWG S 0 18
+	FrameIndex SAWG T 0 19
+	FrameIndex SAWG U 0 20
+}
+
+//electric arc
+Model Loader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "mechaloader_spark.md3"
+	//SurfaceSkin 0 0 "loader_spark_ball.png"
+	SurfaceSkin 0 0 "empty.png"
+	SurfaceSkin 0 1 "loader_spark_ball2.png"
+	SurfaceSkin 0 2 "loader_spark.png"
+
+	Scale -1.0 1.0 1.0
+	Offset -10.0 40.0 -10.0
+
+	//Ready
+	FrameIndex SAWS A 0 0
+	FrameIndex SAWS B 0 1
+	FrameIndex SAWS C 0 2
+	FrameIndex SAWS D 0 3
+	FrameIndex SAWS E 0 4
+	FrameIndex SAWS F 0 5
+	FrameIndex SAWS G 0 6
+	FrameIndex SAWS H 0 7
+	FrameIndex SAWS I 0 8
+	FrameIndex SAWS J 0 9
+	FrameIndex SAWS K 0 10
+}
+
+//Pickup model
+Model Loader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "loader_pickup.md3"
+	SurfaceSkin 0 0 "loader_lower.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_grate.png"
+	Model 1 "loader_lamp.md3"
+	Skin 1 "loader_lamp.jpg"
+
+	Scale 0.4 0.4 0.4
+	Offset 0.0 0.0 -4.0
+
+	//Ready
+	FrameIndex CSAW P 0 0
+}
+
+
+
+Model AELoader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "mechloader.md3"
+	SurfaceSkin 0 0 "loader_grate.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_upper.png"
+
+	Scale -1.0 1.0 1.0
+	Offset -10.0 40.0 -10.0
+
+	//Ready
+	FrameIndex SAWG A 0 0
+
+	//Attack
+	FrameIndex SAWG B 0 1
+	FrameIndex SAWG C 0 2
+	FrameIndex SAWG D 0 3
+	FrameIndex SAWG E 0 4
+	FrameIndex SAWG F 0 5
+	FrameIndex SAWG G 0 6
+	FrameIndex SAWG H 0 7
+	FrameIndex SAWG I 0 8
+	FrameIndex SAWG J 0 9
+	FrameIndex SAWG K 0 10
+	FrameIndex SAWG L 0 11
+	FrameIndex SAWG M 0 12
+	FrameIndex SAWG N 0 13
+	FrameIndex SAWG O 0 14
+	
+	//Alt fire
+	FrameIndex SAWG P 0 15
+	FrameIndex SAWG Q 0 16
+	FrameIndex SAWG R 0 17
+	FrameIndex SAWG S 0 18
+	FrameIndex SAWG T 0 19
+	FrameIndex SAWG U 0 20
+}
+
+//electric arc
+Model AELoader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "mechaloader_spark.md3"
+	//SurfaceSkin 0 0 "loader_spark_ball.png"
+	SurfaceSkin 0 0 "empty.png"
+	SurfaceSkin 0 1 "loader_spark_ball2.png"
+	SurfaceSkin 0 2 "loader_spark.png"
+
+	Scale -1.0 1.0 1.0
+	Offset -10.0 40.0 -10.0
+
+	//Ready
+	FrameIndex SAWS A 0 0
+	FrameIndex SAWS B 0 1
+	FrameIndex SAWS C 0 2
+	FrameIndex SAWS D 0 3
+	FrameIndex SAWS E 0 4
+	FrameIndex SAWS F 0 5
+	FrameIndex SAWS G 0 6
+	FrameIndex SAWS H 0 7
+	FrameIndex SAWS I 0 8
+	FrameIndex SAWS J 0 9
+	FrameIndex SAWS K 0 10
+}
+
+//Pickup model
+Model AELoader_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "loader_pickup.md3"
+	SurfaceSkin 0 0 "loader_lower.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_grate.png"
+	Model 1 "loader_lamp.md3"
+	Skin 1 "loader_lamp.jpg"
+
+	Scale 0.4 0.4 0.4
+	Offset 0.0 0.0 -4.0
+
+	//Ready
+	FrameIndex CSAW P 0 0
+}
+
+//Pickup model
+Model LBerserk_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "loader_pickup.md3"
+	SurfaceSkin 0 0 "loader_lower.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_grate.png"
+	Model 1 "loader_lamp.md3"
+	Skin 1 "loader_lamp.jpg"
+
+	Scale 0.4 0.4 0.4
+	Offset 0.0 0.0 -4.0
+
+	//Ready
+	FrameIndex CSAW P 0 0
+}
+
+//Pickup model
+Model AEBerserk_3D
+{
+	Path "Models\Weapons\mech"
+	Model 0 "loader_pickup.md3"
+	SurfaceSkin 0 0 "loader_lower.png"
+	SurfaceSkin 0 1 "loader_upper.png"
+	SurfaceSkin 0 2 "loader_grate.png"
+	Model 1 "loader_lamp.md3"
+	Skin 1 "loader_lamp.jpg"
+
+	Scale 0.4 0.4 0.4
+	Offset 0.0 0.0 -4.0
+	
+	//Ready
+	FrameIndex CSAW P 0 0
+}

@@ -1,0 +1,37 @@
+version "3.0"
+
+/*
+ZScript simple weather
+https://github.com/MekBoss/Zscript_simple_weather
+*/
+//all weather related constants
+#include "zscript/we4ther_eff3cts/weather/constants.zc"
+//basic analitic geometry math
+#include "zscript/we4ther_eff3cts/weather/math.zc"
+//helpers that store info for future use
+#include "zscript/we4ther_eff3cts/weather/helpers.zc"
+
+//initialize weather sequence
+//to apply specific weather to specific map go to this file
+#include "zscript/we4ther_eff3cts/weather/main_event.zc"
+
+//next files are important, since its how all system works "under the hood"
+//change something there only if you REALLY know what you are doing
+//control weather inside sector
+#include "zscript/we4ther_eff3cts/weather/sector_weather_handler.zc"
+//spawner of a snow/rain/etc.
+#include "zscript/we4ther_eff3cts/weather/percipitation_spawner.zc"
+//actual thing which actually shows as snow/rain/etc
+#include "zscript/we4ther_eff3cts/weather/actual_precipitation.zc"
+
+//thing that read weather definition
+#include "zscript/we4ther_eff3cts/lump_parser/c_like_parser.zc"
+//thing that store parsed weather definition
+#include "zscript/we4ther_eff3cts/lump_parser/weather_definition.zc"
+
+
+
+#include "zscript/replacements.txt"
+#include "zscript/superhuman_attributes.txt"
+#include "zscript/superhuman_moves.txt"
+#include "zscript/infravision.txt"

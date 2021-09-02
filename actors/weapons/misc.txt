@@ -1,0 +1,347 @@
+//SFX codes from Brutal/Beautiful Doom
+
+Actor ExplosionParticle
+{
+  Height 1
+  Radius 1
+  Mass 0
+  +Missile
+  +NoBlockMap
+  +DontSplash
+  +FORCEXYBILLBOARD
+  +CLIENTSIDEONLY
+  +THRUACTORS
+  +GHOST
+  -NOGRAVITY
+  +THRUGHOST
+  +NOTELEPORT
+  RenderStyle Add
+  Scale 0.8
+  Gravity 0
+  States
+  {
+  Spawn:
+    SPKO B 1 Bright A_FadeOut(0.02)
+    Loop
+  }
+}
+
+Actor DebrisGeneral
+{
++FIXMAPTHINGPOS
++LOOKALLAROUND
++NOTAUTOAIMED
++MISSILE
++NOBLOCKMAP +MOVEWITHSECTOR
++NOGRAVITY
++DROPOFF
++NOTELEPORT
++FORCEXYBILLBOARD
+//+NOTDMATCH
++GHOST
++THRUACTORS
++FLOORCLIP
+renderstyle Translucent
+alpha 1.0
+radius 1
+height 1
+mass 1
+damage 0
+}
+
+Actor Smoke_General : DebrisGeneral
+{
++NOINTERACTION
+vspeed 1
+renderstyle Add
+alpha 0.3
+scale 0.1
+states
+	{
+	Spawn:
+		TNT1 A 0 A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMOK ABCDEFGHIJKLMNOPQ 1 A_SpawnItemEx("ShotSmokeTrail",random(-2,2),random(-2,2),random(-2,2),0,0,0,0) //A_FadeOut(0.01)
+		stop
+	}
+}
+
+Actor BasicSmokeTrail : Smoke_General
+{
+vspeed 0
+alpha 0.15
+states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMOK CDEFGHIJKLMNOPQ 1
+		stop
+	}
+}
+
+Actor WallPart : DebrisGeneral
+{
+bouncetype "Doom"
+-NOGRAVITY
++DONTSPLASH
+speed 8
+bouncefactor 0.4
+Renderstyle Translucent
+alpha 1.0
+scale 0.1
+translation "0:4=5:8","5:8=5:8","9:12=5:8","13:15=5:8","16:47=5:8","48:79=5:8","80:111=5:8","112:127=5:8","128:151=5:8","152:159=5:8","160:167=5:8","168:191=5:8","192:207=5:8","208:223=5:8","224:231=5:8","232:235=5:8","236:239=5:8","240:247=5:8","248:249=5:8","250:254=5:8","255:255=5:8"
+states
+	{
+	Spawn:
+		BPRT ACDEFGH 2 A_JumpIf(velz == 0,"Null")
+		BPRT ACDEFGH 3 A_JumpIf(velz == 0,"Null")
+		stop
+	 Death:
+	 	stop
+	 }
+}
+
+actor HitDust : DebrisGeneral
+{
+-MISSILE
++NOINTERACTION
+renderstyle Add
+alpha 0.4
+scale 0.18
+states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMOK ABCDEFGHIJKLMNOPQ 1
+		stop
+	}
+}
+
+ACTOR EnhancedKnifePuff
+{
+	+NOBLOCKMAP
+	+NOGRAVITY
+	+NOEXTREMEDEATH
+	+PUFFONACTORS
+	+NODECAL
+	-DONTSPLASH
+	-ALLOWPARTICLES
+	+PUFFONACTORS
+	RenderStyle Translucent
+	Alpha 0.6
+	VSpeed 0
+	states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("knife/hitwall")
+		TNT1 AAAAA 0 A_SpawnItemEx("Wallpart",0,0,12, random(6,9),0,random(6,15),	random(0,360),0,192)
+		TNT1 A 0 A_SpawnItemEx("HitDust",0,0,11)
+		TNT1 A 0 A_Jump(90,"Puff")
+		TNT1 AAAAA 0 A_SpawnItemEx("BulletSpark",0,0,12, random(1,2),0,random(5,10),random(0,360),0,40)
+	Puff:
+		TNT1 A 0
+		stop
+	XDeath:
+		TNT1 A 0 A_PlaySound("melee/hitbody")
+		Stop
+	}
+}
+
+ACTOR EnhancedLoaderPuff: EnhancedKnifePuff
+{
+	states
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_PlaySound("melee/hitwall")
+		TNT1 AAAAA 0 A_SpawnItemEx("Wallpart",0,0,13, random(6,9),0,random(6,15),	random(0,360),0,192)
+		TNT1 A 0 A_SpawnItemEx("HitDust",0,0,12)
+		TNT1 A 0 A_Jump(90,"Puff")
+		TNT1 AAAAA 0 A_SpawnItemEx("BulletSpark",0,0,13, random(1,2),0,random(5,10),random(0,360),0,40)
+	Puff:
+		TNT1 A 0
+		stop
+	XDeath:
+		TNT1 A 0 A_PlaySound("melee/hitbody")
+		Stop
+	}
+}
+
+Actor RicochetBullet //: FastProjectile
+{
+	-ACTIVATEIMPACT
+	-ACTIVATEPCROSS
+	+FORCEXYBILLBOARD
+	+THRUACTORS
+	bouncetype "Hexen"
+	mass 1
+	damage 0
+	radius 1
+	height 1
+	speed 30
+	seesound ""
+	renderstyle Add
+	alpha 0.8
+	//MissileType BulletTrail
+	//MissileHeight 8
+	states
+	{
+	Spawn:
+		TNT1 AAA 0 A_CustomMissile ("BulletSpark", 2, 0, random (0, 360), 2, random (0, 360))
+		TNT1 A 0 A_PlaySound("weapons/ricochet")
+		PUFF A 2
+		stop
+	}
+}
+
+Actor BulletTracer : FastProjectile
+{
+-ACTIVATEIMPACT
+-ACTIVATEPCROSS
++NOTELEPORT
++BLOODLESSIMPACT
++THRUGHOST
+alpha .75
+renderstyle add
+damage 0
+speed 200
+radius 4
+height 4
+seesound ""
+deathsound ""
+states
+	{
+	Spawn:
+		PUFF A 1 bright A_JumpIfCloser(192,2)
+		TNT1 A 0 A_FadeOut(0.1)
+		loop
+		PUFF A 30 bright A_PlaySound("weapons/tracerwhizz",1,1.0,0,8)
+		loop
+	XDeath:
+		TNT1 A 0
+		stop
+	Death:
+		TNT1 A 0 A_Jump(210,"Null")
+		TNT1 A 0 A_SpawnProjectile("RicochetBullet",0,0,random(0,360),2,random(-40,40))
+		stop
+	}
+}
+
+actor WeaponSmoke : Smoke_General
+{
+alpha 0.25
+scale 0.15
+states
+	{
+	Spawn:
+		TNT1 A 0 A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMK1 ABCDEFGHIJKLMNOPQR 1 A_SpawnItemEx("WeaponSmokeTrail",random(-2,2),random(-2,2),random(-2,2),0,0,0,0)
+		stop
+	}
+}
+
+actor ShotSmoke : Smoke_General
+{
+alpha 0.4
+scale 0.18
+states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMK1 ABCDEFGHIJKLMNOPQR 1 A_SpawnItemEx("ShotSmokeTrail",random(-2,2),random(-2,2),random(-2,2),0,0,0,0)
+		stop
+	}
+}
+
+Actor WeaponSmokeTrail : ShotSmoke
+{
+alpha .1
+vspeed 0
+scale .12
+states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMK1 DEFGHIJKLMNOPQR 1
+		stop
+	}
+}
+
+Actor ShotSmokeTrail : ShotSmoke
+{
+alpha .1
+vspeed 0
+scale .16
+states
+	{
+	Spawn:
+		TNT1 A 0 NoDelay A_SetScale(scalex*randompick(-1,1),scaley*randompick(-1,1))
+		SMK1 DEFGHIJKLMNOPQR 1
+		stop
+	}
+}
+
+Actor GunBarrelSmoke: ExplosionParticle
+{
+	Radius 1
+	Height 1
+	Speed 0
+	Damage 0
+	Projectile
+	SeeSound ""
+	DeathSound ""
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("WeaponSmoke",random(6,8),0,random(1,2),0,0,1,0)
+		Stop
+	Death:
+		TNT1 A 0
+		Stop
+	}
+}
+
+Actor ShotgunBarrelSmoke: GunBarrelSmoke
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("ShotSmoke",random(18,20),random(-1,1),random(1,2),0,0,1,0)
+		Stop
+	}
+}
+
+Actor RifleBarrelSmoke: GunBarrelSmoke
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("ShotSmoke",random(16,18),random(-1,1),random(1,2),0,0,1,0)
+		Stop
+	}
+}
+
+Actor SmartgunBarrelSmoke: GunBarrelSmoke
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 A 0 A_SpawnItemEx("WeaponSmoke",random(22,24),random(-1,1),random(1,3),0,0,1,0)
+		Stop
+	}
+}
+
+Actor FlameBarrelSmoke: GunBarrelSmoke
+{
+	States
+	{
+	Spawn:
+		TNT1 A 0
+		TNT1 AAA 1 A_SpawnItemEx("WeaponSmoke",random(22,26),random(-2,4),random(2,5),0,0,1,0)
+		Stop
+	}
+}
