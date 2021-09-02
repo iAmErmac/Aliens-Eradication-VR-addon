@@ -19,10 +19,10 @@ server int avw_pickupmodel = 0;
 server int avw_weapons = 1;
 server bool avw_tracers = true;
 server bool avw_weapons_mf = true;
-server bool avw_remove_envitems = true;
-server bool avw_remove_garbage = true;
-server bool avw_remove_strobelight = true;
-server bool avw_remove_lamps = true;
+server bool avw_remove_envitems = false;
+server bool avw_remove_garbage = false;
+server bool avw_remove_strobelight = false;
+server bool avw_remove_lamps = false;
 
 server float avw_damage_mult = 1.0;
 server float avw_jump_mult = 1.0;
