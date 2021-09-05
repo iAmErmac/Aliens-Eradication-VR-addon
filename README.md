@@ -22,6 +22,10 @@ To download the Aliens Eradication VR mod click the download button below:
 * A few performance options to remove some map effects (may help getting more fps)
 * Various fixes to make the mod compatible with both the older and the latest Aliens Eradication mod (HUD fix, ammo capacity fix etc.)
 
+## Known Issues
+* The Aliens Eradication mapsets have poor performance in VR while in the open areas. To boost performance it is advised to bind a key to toggle raining in the control customization menu. Use the toggle key to turn off raining when outside
+* Flashlight may not work with the latest version of the mod in QuestZDoom. You can use another flashlight mod, or read the following QuestZDoom optimization section for alternate options
+
 ## Installation
 
 ### GZDoom VR (PC-VR)
